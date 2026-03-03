@@ -12,9 +12,10 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-xs;
+  border-left: 3px solid var(--syntax-function);
 
   h1 {
-    color: var(--accent);
+    color: var(--syntax-function);
     font-size: clamp(1.05rem, 1.8vw, 1.4rem);
   }
 }
@@ -34,11 +35,16 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-s;
+  background: linear-gradient(
+    130deg,
+    color-mix(in srgb, var(--surface-2) 72%, transparent) 0%,
+    color-mix(in srgb, var(--editor-surface) 92%, transparent) 100%
+  );
 
   label {
     display: grid;
     gap: 0.35rem;
-    color: var(--text-secondary);
+    color: var(--syntax-property);
     font-size: variables.$font-size-sm;
   }
 
@@ -54,6 +60,7 @@
     &:focus {
       outline: none;
       border-color: var(--accent);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
     }
   }
 
@@ -64,7 +71,7 @@
     gap: variables.$space-2xs;
     border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--border-muted));
     border-radius: variables.$border-radius-sm;
-    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
     color: var(--text-primary);
     padding: 0.5rem 0.78rem;
   }
@@ -75,9 +82,11 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-s;
+  border-left: 3px solid var(--syntax-green);
 
   h2 {
     font-size: 1rem;
+    color: var(--syntax-green);
   }
 
   a {
@@ -86,18 +95,10 @@
     gap: variables.$space-2xs;
     color: var(--text-secondary);
     word-break: break-all;
-  }
-}
 
-.note {
-  margin-top: variables.$space-s;
-  border-top: 1px solid var(--border-muted);
-  padding-top: variables.$space-s;
-
-  code {
-    margin-left: 0.35rem;
-    color: var(--accent);
-    font-size: variables.$font-size-xs;
+    &:hover {
+      color: var(--accent);
+    }
   }
 }
 

@@ -20,13 +20,6 @@ const ContactLinks = ({ contacts }) => {
         <Linkedin size={16} />
         {contacts.linkedin}
       </a>
-
-      <div className={styles.note}>
-        <p>
-          Tip: si queres exponer links reales de GitHub/LinkedIn, actualiza
-          <code>src/data/profile.js</code>.
-        </p>
-      </div>
     </aside>
   );
 };
