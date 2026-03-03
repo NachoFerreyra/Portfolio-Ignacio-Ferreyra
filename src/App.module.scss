@@ -3,6 +3,10 @@
 
 .shell {
   background: var(--surface-0);
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 .workspace {
@@ -10,6 +14,7 @@
   min-height: 0;
   display: flex;
   background: var(--surface-0);
+  overflow: hidden;
 }
 
 .editor {
@@ -20,12 +25,14 @@
   flex-direction: column;
   border-left: 1px solid var(--border-muted);
   background: var(--editor-surface);
+  overflow: hidden;
 }
 
 .editorContent {
   flex: 1;
   min-height: 0;
   overflow: auto;
+  overscroll-behavior: contain;
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--editor-surface) 94%, transparent) 0%,

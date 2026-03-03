@@ -50,6 +50,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
             </span>
             <span>{toApprox(project.architecture.components)} componentes</span>
             <span>{toApprox(project.architecture.pages)} pages</span>
+            <span>{toApprox(project.architecture.group)} integrantes</span>
           </div>
         </div>
       ) : null}

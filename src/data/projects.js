@@ -51,6 +51,7 @@ export const projects = [
       scssFiles: 110,
       components: 122,
       pages: 26,
+      group: 3,
     },
   },
   {
@@ -81,6 +82,7 @@ export const projects = [
       scssFiles: 205,
       components: 262,
       pages: 25,
+      group: 3,
     },
   },
   {

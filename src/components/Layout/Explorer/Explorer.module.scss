@@ -3,11 +3,13 @@
 
 .explorer {
   width: 16rem;
+  height: 100%;
   border-right: 1px solid var(--border-muted);
   background: var(--surface-1);
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow: hidden;
 
   @include mixins.media-down(variables.$breakpoint-md) {
     position: fixed;
@@ -104,6 +106,10 @@
 }
 
 .bottomActions {
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
   border-top: 1px solid var(--border-muted);
   padding: variables.$space-s;
   background: color-mix(in srgb, var(--surface-2) 75%, transparent);

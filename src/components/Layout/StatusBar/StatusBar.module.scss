@@ -1,6 +1,9 @@
 @use "@/styles/variables" as variables;
 
 .statusBar {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
   min-height: 1.8rem;
   border-top: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border-muted));
   background: color-mix(in srgb, var(--surface-3) 78%, var(--accent) 22%);
