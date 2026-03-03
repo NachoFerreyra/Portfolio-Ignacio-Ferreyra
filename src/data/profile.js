@@ -1,8 +1,6 @@
 export const profile = {
   name: "Ignacio Ferreyra",
   role: "Analista Programador Universitario | Frontend Developer",
-  tagline:
-    "Diseño la arquitectura, modelo los datos y construyo interfaces sólidas, escalables y con foco en producto.",
   location: "Argentina",
   availability: "true",
   summary:

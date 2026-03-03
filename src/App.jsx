@@ -25,7 +25,6 @@ const App = () => {
   );
 
   const [openTabs, setOpenTabs] = useState(["readme"]);
-  const [isExplorerOpen, setIsExplorerOpen] = useState(false);
 
   const tabsWithActive = useMemo(() => {
     if (!activeFile) return openTabs;
@@ -42,7 +41,6 @@ const App = () => {
       currentTabs.includes(fileId) ? currentTabs : [...currentTabs, fileId],
     );
     navigate(file.route);
-    setIsExplorerOpen(false);
   };
 
   const handleSelectTab = (fileId) => {
@@ -73,12 +71,7 @@ const App = () => {
 
   return (
     <div className={`u-app-shell ${styles.shell}`}>
-      <TopBar
-        isExplorerOpen={isExplorerOpen}
-        onToggleExplorer={() => setIsExplorerOpen((currentValue) => !currentValue)}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-      />
+      <TopBar theme={theme} onToggleTheme={toggleTheme} />
 
       <main className={styles.workspace}>
         <ActivityBar />
@@ -87,8 +80,6 @@ const App = () => {
           files={explorerFiles}
           activeFileId={activeFile?.id}
           onOpenFile={handleOpenFile}
-          isOpen={isExplorerOpen}
-          onClose={() => setIsExplorerOpen(false)}
         />
 
         <section className={styles.editor}>

@@ -10,24 +10,22 @@ const HeroCard = ({ profile }) => {
 
       <pre className={styles.codeBlock}>
         <span>
-          <em>const</em> developer = {'{'}
+          <em>const</em> developer = {"{"}
         </span>
         <span>
-          {'  '}name: "{profile.name}",
+          {"  "}name: "{profile.name}",
         </span>
         <span>
-          {'  '}role: "{profile.role}",
+          {"  "}role: "{profile.role}",
         </span>
         <span>
-          {'  '}location: "{profile.location}",
+          {"  "}location: "{profile.location}",
         </span>
         <span>
-          {'  '}availability: "{profile.availability}",
+          {"  "}availability: "{profile.availability}",
         </span>
-        <span>{'}'};</span>
+        <span>{"}"};</span>
       </pre>
-
-      <p>{profile.tagline}</p>
 
       <div className={styles.links}>
         <a href={profile.contacts.github} target="_blank" rel="noreferrer">

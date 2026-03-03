@@ -17,41 +17,33 @@ const iconByFileId = {
   contacto: Mail,
 };
 
-const Explorer = ({ files, activeFileId, onOpenFile, isOpen, onClose }) => {
+const Explorer = ({ files, activeFileId, onOpenFile }) => {
   return (
-    <>
-      <div
-        role="presentation"
-        className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ""}`}
-        onClick={onClose}
-      />
+    <aside className={styles.explorer}>
+      <header className={styles.header}>
+        <span>EXPLORER</span>
+        <small>PORTFOLIO-IGNACIO</small>
+      </header>
 
-      <aside className={`${styles.explorer} ${isOpen ? styles.explorerOpen : ""}`}>
-        <header className={styles.header}>
-          <span>EXPLORER</span>
-          <small>PORTFOLIO-IGNACIO</small>
-        </header>
+      <div className={styles.fileList}>
+        {files.map((file) => {
+          const Icon = iconByFileId[file.id] || FileCode2;
+          const isActive = activeFileId === file.id;
 
-        <div className={styles.fileList}>
-          {files.map((file) => {
-            const Icon = iconByFileId[file.id] || FileCode2;
-            const isActive = activeFileId === file.id;
-
-            return (
-              <button
-                key={file.id}
-                type="button"
-                className={`${styles.fileItem} ${isActive ? styles.fileItemActive : ""}`}
-                onClick={() => onOpenFile(file.id)}
-              >
-                <Icon size={15} />
-                <span>{file.name}</span>
-              </button>
-            );
-          })}
-        </div>
-      </aside>
-    </>
+          return (
+            <button
+              key={file.id}
+              type="button"
+              className={`${styles.fileItem} ${isActive ? styles.fileItemActive : ""}`}
+              onClick={() => onOpenFile(file.id)}
+            >
+              <Icon size={15} />
+              <span>{file.name}</span>
+            </button>
+          );
+        })}
+      </div>
+    </aside>
   );
 };
 

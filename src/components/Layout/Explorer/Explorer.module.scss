@@ -1,21 +1,6 @@
 @use "@/styles/variables" as variables;
 @use "@/styles/mixins";
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  pointer-events: none;
-  z-index: variables.$z-index-modal-backdrop;
-  @include mixins.transition((opacity));
-}
-
-.overlayVisible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .explorer {
   width: 16rem;
   border-right: 1px solid var(--border-muted);
@@ -25,19 +10,7 @@
   min-height: 0;
 
   @include mixins.media-down(variables.$breakpoint-md) {
-    position: fixed;
-    top: 3rem;
-    right: 0;
-    height: calc(100dvh - 3rem);
-    z-index: variables.$z-index-modal;
-    transform: translateX(100%);
-    @include mixins.transition((transform));
-  }
-}
-
-.explorerOpen {
-  @include mixins.media-down(variables.$breakpoint-md) {
-    transform: translateX(0%);
+    display: none;
   }
 }
 

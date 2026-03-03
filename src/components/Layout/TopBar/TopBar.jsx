@@ -1,7 +1,7 @@
-import { Menu, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import styles from "./TopBar.module.scss";
 
-const TopBar = ({ isExplorerOpen, onToggleExplorer, theme, onToggleTheme }) => {
+const TopBar = ({ theme, onToggleTheme }) => {
   return (
     <header className={styles.topBar}>
       <div className={styles.brand}>
@@ -10,16 +10,6 @@ const TopBar = ({ isExplorerOpen, onToggleExplorer, theme, onToggleTheme }) => {
       </div>
 
       <div className={styles.actions}>
-        <button
-          type="button"
-          className={styles.iconButton}
-          onClick={onToggleExplorer}
-          aria-label="Alternar explorador"
-        >
-          <Menu size={16} />
-          <span>{isExplorerOpen ? "Cerrar" : "Explorador"}</span>
-        </button>
-
         <button
           type="button"
           className={styles.iconButton}
