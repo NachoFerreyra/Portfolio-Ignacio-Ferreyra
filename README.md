@@ -4,13 +4,14 @@ Portfolio interactivo inspirado en la interfaz de Visual Studio Code.
 
 ## Qué incluye
 
-- UI estilo VS Code (top bar, activity bar, explorer, tabs y status bar).
-- Navegación por secciones como si fueran archivos (`README.md`, `inicio.jsx`, `sobre-mi.jsx`, etc.).
-- Presentación personal, experiencia, proyectos, habilidades y contacto.
-- Data desacoplada para editar contenido sin tocar lógica de componentes.
+- Interfaz estilo VS Code (explorador, pestañas y barra de estado).
+- Secciones de inicio, sobre mí, proyectos, habilidades y contacto.
+- Proyectos reales con detalle técnico.
+- Modo claro/oscuro.
 
-## Proyectos destacados dentro del portfolio
+## Proyectos incluidos
 
+- Portfolio Ignacio Ferreyra
 - Estetica CG - Web
 - Estetica CG - Admin
 - MSBienesRaices
@@ -22,26 +23,6 @@ Portfolio interactivo inspirado en la interfaz de Visual Studio Code.
 - React Router
 - SCSS + CSS Modules
 - Lucide React
-
-## Estructura
-
-```bash
-src/
-  components/
-    Layout/
-    Inicio/
-    SobreMi/
-    Proyectos/
-    Habilidades/
-    Contacto/
-    Readme/
-  containers/pages/
-  contexts/
-  data/
-  routes/
-  styles/
-  utils/
-```
 
 ## Scripts
 
@@ -57,32 +38,11 @@ npm install
 npm run dev
 ```
 
-## Personalización rápida
-
-Si querés actualizar contenido, estos archivos son los más importantes:
-
-- `src/data/profile.js` -> datos personales y contacto
-- `src/data/projects.js` -> proyectos, stack, highlights y métricas
-- `src/data/skills.js` -> grupos de habilidades
-
-## Enfoque de arquitectura
-
-- Separación clara entre `data`, `components`, `pages` y `styles`.
-- Componentes por dominio para mantener escalabilidad.
-- Estilos modulares (`module.scss`) para evitar conflictos.
-- Layout reutilizable para mantener consistencia visual.
-
-## Roadmap
-
-- Animaciones más ricas por sección.
-- Integración de formulario de contacto con backend.
-- Mejoras de accesibilidad y SEO.
-
 ## Contacto
 
-- Email: `ignacioferreyra.dev@gmail.com`
-- LinkedIn: `https://www.linkedin.com/`
-- GitHub: `https://github.com/`
+- Email: `ignaciooferreyraa@gmail.com`
+- GitHub: `https://github.com/NachoFerreyra`
+- LinkedIn: `https://www.linkedin.com/in/ignacio-ferreyra1`
 
 ## Licencia
 
