@@ -81,20 +81,28 @@
   @include mixins.code-card;
   padding: variables.$space-l;
   display: grid;
-  gap: variables.$space-s;
+  gap: variables.$space-xs;
   border-left: 3px solid var(--syntax-green);
+  align-content: start;
 
   h2 {
     font-size: 1rem;
     color: var(--syntax-green);
   }
+}
+
+.linksList {
+  display: grid;
+  gap: 0.65rem;
 
   a {
     display: inline-flex;
     align-items: center;
+    align-self: start;
     gap: variables.$space-2xs;
     color: var(--text-secondary);
     word-break: break-all;
+    line-height: 1.25;
 
     &:hover {
       color: var(--accent);

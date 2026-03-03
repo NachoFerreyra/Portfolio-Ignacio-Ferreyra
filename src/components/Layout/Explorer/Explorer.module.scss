@@ -70,6 +70,8 @@
 }
 
 .fileList {
+  flex: 1;
+  min-height: 0;
   overflow: auto;
   padding: variables.$space-xs variables.$space-xs variables.$space-m;
 }
@@ -99,4 +101,34 @@
   background: color-mix(in srgb, var(--accent) 20%, transparent);
   border-color: color-mix(in srgb, var(--accent) 40%, var(--border-muted));
   color: var(--text-primary);
+}
+
+.bottomActions {
+  border-top: 1px solid var(--border-muted);
+  padding: variables.$space-s;
+  background: color-mix(in srgb, var(--surface-2) 75%, transparent);
+}
+
+.downloadCv {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: variables.$border-radius-md;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border-muted));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 76%, #114a8a 24%) 0%,
+    color-mix(in srgb, var(--accent) 62%, #4f46e5 38%) 100%
+  );
+  color: #f7fbff;
+  font-weight: 600;
+  font-size: variables.$font-size-sm;
+  padding: 0.58rem 0.7rem;
+  @include mixins.transition((filter, transform));
+
+  &:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
 }

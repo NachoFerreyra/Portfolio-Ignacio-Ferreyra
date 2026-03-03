@@ -27,7 +27,9 @@ const Explorer = ({ files, activeFileId, onOpenFile, isOpen, onClose }) => {
         aria-label="Cerrar explorador"
       />
 
-      <aside className={`${styles.explorer} ${isOpen ? styles.explorerOpen : ""}`}>
+      <aside
+        className={`${styles.explorer} ${isOpen ? styles.explorerOpen : ""}`}
+      >
         <header className={styles.header}>
           <span>ARCHIVOS</span>
           <small>ignacio-portfolio</small>
@@ -50,6 +52,17 @@ const Explorer = ({ files, activeFileId, onOpenFile, isOpen, onClose }) => {
               </button>
             );
           })}
+        </div>
+
+        <div className={styles.bottomActions}>
+          <a
+            href="/cv/Ignacio Ferreyra CV.pdf"
+            download
+            className={styles.downloadCv}
+            onClick={onClose}
+          >
+            Descargar CV
+          </a>
         </div>
       </aside>
     </>
