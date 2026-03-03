@@ -1,0 +1,59 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.habilidades {
+  padding: clamp(1rem, 2vw, 1.8rem);
+  display: grid;
+  gap: variables.$space-l;
+}
+
+.header {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-xs;
+
+  h1 {
+    color: var(--accent);
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  }
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: variables.$space-m;
+
+  @include mixins.media-down(variables.$breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.group {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-s;
+
+  h2 {
+    font-size: 1rem;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-xs;
+
+  span {
+    background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+    border: 1px solid var(--border-muted);
+    border-radius: variables.$border-radius-sm;
+    padding: 0.22rem 0.5rem;
+    font-size: variables.$font-size-xs;
+  }
+}
+
+.closure {
+  color: var(--text-muted);
+}

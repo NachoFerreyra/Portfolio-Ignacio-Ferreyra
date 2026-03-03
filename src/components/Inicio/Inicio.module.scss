@@ -1,0 +1,105 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.inicio {
+  padding: clamp(1rem, 2vw, 1.8rem);
+  display: grid;
+  gap: variables.$space-l;
+}
+
+.block {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-xs;
+
+  h2 {
+    font-size: 1.1rem;
+  }
+}
+
+.heroCard {
+  @include mixins.code-card;
+  padding: 0;
+  overflow: hidden;
+
+  p {
+    padding: 0 variables.$space-l variables.$space-l;
+  }
+}
+
+.codeHeader {
+  border-bottom: 1px solid var(--border-muted);
+  padding: 0.6rem variables.$space-l;
+  background: color-mix(in srgb, var(--surface-2) 75%, transparent);
+  font-size: variables.$font-size-xs;
+  color: var(--text-muted);
+}
+
+.codeBlock {
+  margin: 0;
+  display: grid;
+  gap: variables.$space-2xs;
+  padding: variables.$space-l;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--editor-surface) 90%, transparent);
+
+  em {
+    color: #cf8ef4;
+    font-style: normal;
+  }
+}
+
+.links {
+  padding: 0 variables.$space-l variables.$space-l;
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-s;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: variables.$space-2xs;
+    border: 1px solid var(--border-muted);
+    border-radius: variables.$border-radius-sm;
+    padding: 0.42rem 0.7rem;
+    background: var(--surface-2);
+    @include mixins.transition((background-color, border-color));
+
+    &:hover {
+      background: var(--surface-3);
+      border-color: var(--border-strong);
+    }
+  }
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: variables.$space-m;
+
+  @include mixins.media-down(variables.$breakpoint-lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mixins.media-down(variables.$breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metricCard {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-2xs;
+
+  strong {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--accent);
+  }
+
+  span {
+    color: var(--text-secondary);
+    font-size: variables.$font-size-sm;
+  }
+}

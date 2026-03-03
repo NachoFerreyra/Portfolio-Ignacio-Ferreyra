@@ -1,0 +1,17 @@
+@use "variables";
+@use "functions";
+@use "mixins";
+@use "fonts";
+@use "base";
+@use "typography";
+@use "utilities";
+
+::-moz-selection {
+  color: variables.$color-text-inverted;
+  background-color: variables.$color-light-blue-dark;
+}
+
+::selection {
+  color: variables.$color-text-inverted;
+  background-color: variables.$color-light-blue-dark;
+}

@@ -1,0 +1,31 @@
+@use "variables";
+
+body {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-base;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: variables.$font-family-headings;
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+code,
+pre {
+  font-family: variables.$font-family-monospace;
+}

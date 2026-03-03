@@ -1,0 +1,72 @@
+@use "variables";
+@use "sass:list";
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-distribute($justify: space-between, $align: flex-start, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin media-up($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-down($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin apply-shadow($level: md) {
+  @if $level == sm {
+    box-shadow: variables.$box-shadow-sm;
+  } @else if $level == md {
+    box-shadow: variables.$box-shadow-md;
+  } @else if $level == lg {
+    box-shadow: variables.$box-shadow-lg;
+  } @else {
+    box-shadow: none;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@mixin transition(
+  $properties: all,
+  $duration: variables.$transition-duration-base,
+  $easing: variables.$transition-easing-default
+) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: list.append($transitions, #{$property $duration $easing}, comma);
+  }
+
+  transition: $transitions;
+}
+
+@mixin code-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border-muted);
+  border-radius: variables.$border-radius-lg;
+  @include apply-shadow(sm);
+}

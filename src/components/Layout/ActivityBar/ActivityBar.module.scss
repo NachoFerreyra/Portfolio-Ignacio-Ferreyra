@@ -1,0 +1,44 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.activityBar {
+  width: 3rem;
+  border-right: 1px solid var(--border-muted);
+  background: var(--surface-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: variables.$space-s 0;
+  gap: variables.$space-s;
+}
+
+.item {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: variables.$border-radius-sm;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include mixins.transition((background-color, border-color, color));
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-muted);
+    background: var(--surface-2);
+  }
+}
+
+.active {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-muted));
+}
+
+@include mixins.media-down(variables.$breakpoint-md) {
+  .activityBar {
+    display: none;
+  }
+}

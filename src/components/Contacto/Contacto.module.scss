@@ -1,0 +1,116 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.contacto {
+  padding: clamp(1rem, 2vw, 1.8rem);
+  display: grid;
+  gap: variables.$space-l;
+}
+
+.header {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-xs;
+
+  h1 {
+    color: var(--accent);
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: variables.$space-m;
+
+  @include mixins.media-down(variables.$breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-s;
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    color: var(--text-secondary);
+    font-size: variables.$font-size-sm;
+  }
+
+  input,
+  textarea {
+    border: 1px solid var(--border-muted);
+    border-radius: variables.$border-radius-sm;
+    background: color-mix(in srgb, var(--editor-surface) 95%, transparent);
+    color: var(--text-primary);
+    padding: 0.55rem 0.65rem;
+    font-size: variables.$font-size-sm;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+  }
+
+  button {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: variables.$space-2xs;
+    border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--border-muted));
+    border-radius: variables.$border-radius-sm;
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    color: var(--text-primary);
+    padding: 0.5rem 0.78rem;
+  }
+}
+
+.linksCard {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-s;
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: variables.$space-2xs;
+    color: var(--text-secondary);
+    word-break: break-all;
+  }
+}
+
+.note {
+  margin-top: variables.$space-s;
+  border-top: 1px solid var(--border-muted);
+  padding-top: variables.$space-s;
+
+  code {
+    margin-left: 0.35rem;
+    color: var(--accent);
+    font-size: variables.$font-size-xs;
+  }
+}
+
+.error {
+  color: var(--danger);
+  font-size: variables.$font-size-xs;
+}
+
+.success {
+  color: var(--success);
+  font-size: variables.$font-size-xs;
+}
+
+.closure {
+  color: var(--text-muted);
+}

@@ -1,0 +1,21 @@
+@use "@/styles/variables" as variables;
+
+.statusBar {
+  min-height: 1.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border-muted));
+  background: color-mix(in srgb, var(--accent) 85%, black 0%);
+  color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: variables.$space-m;
+  padding: 0 variables.$space-s;
+  font-size: 0.72rem;
+}
+
+.left,
+.right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}

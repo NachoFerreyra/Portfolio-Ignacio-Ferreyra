@@ -1,0 +1,108 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.proyectos {
+  padding: clamp(1rem, 2vw, 1.8rem);
+  display: grid;
+  gap: variables.$space-l;
+}
+
+.header {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-xs;
+
+  h1 {
+    color: var(--accent);
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  }
+}
+
+.list {
+  display: grid;
+  gap: variables.$space-m;
+}
+
+.card {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-s;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: variables.$space-m;
+
+  h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: variables.$space-xs;
+    font-size: 1.05rem;
+  }
+
+  button {
+    border: 1px solid var(--border-muted);
+    border-radius: variables.$border-radius-sm;
+    background: var(--surface-2);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: variables.$space-2xs;
+    padding: 0.3rem 0.6rem;
+    font-size: variables.$font-size-xs;
+  }
+}
+
+.stack,
+.metrics,
+.routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-xs;
+}
+
+.stack span,
+.metrics span {
+  border: 1px solid var(--border-muted);
+  border-radius: variables.$border-radius-xxl;
+  padding: 0.2rem 0.5rem;
+  font-size: variables.$font-size-xs;
+}
+
+.details {
+  border-top: 1px solid var(--border-muted);
+  padding-top: variables.$space-s;
+  display: grid;
+  gap: variables.$space-s;
+
+  h3 {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  ul {
+    display: grid;
+    gap: 0.3rem;
+
+    li {
+      color: var(--text-secondary);
+      font-size: variables.$font-size-sm;
+    }
+  }
+
+  code {
+    border-radius: variables.$border-radius-sm;
+    border: 1px solid var(--border-muted);
+    padding: 0.2rem 0.4rem;
+    color: var(--accent);
+    font-size: variables.$font-size-xs;
+  }
+}
+
+.footer {
+  color: var(--text-muted);
+}

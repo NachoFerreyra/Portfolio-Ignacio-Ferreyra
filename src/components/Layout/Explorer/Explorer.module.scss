@@ -1,0 +1,93 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  z-index: variables.$z-index-modal-backdrop;
+  @include mixins.transition((opacity));
+}
+
+.overlayVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.explorer {
+  width: 16rem;
+  border-right: 1px solid var(--border-muted);
+  background: var(--surface-1);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  @include mixins.media-down(variables.$breakpoint-md) {
+    position: fixed;
+    top: 3rem;
+    right: 0;
+    height: calc(100dvh - 3rem);
+    z-index: variables.$z-index-modal;
+    transform: translateX(100%);
+    @include mixins.transition((transform));
+  }
+}
+
+.explorerOpen {
+  @include mixins.media-down(variables.$breakpoint-md) {
+    transform: translateX(0%);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$space-2xs;
+  padding: variables.$space-s variables.$space-m;
+  border-bottom: 1px solid var(--border-muted);
+
+  span {
+    font-size: variables.$font-size-xs;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  small {
+    font-size: variables.$font-size-xs;
+    color: var(--text-secondary);
+  }
+}
+
+.fileList {
+  overflow: auto;
+  padding: variables.$space-xs variables.$space-xs variables.$space-m;
+}
+
+.fileItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: variables.$space-xs;
+  border: 1px solid transparent;
+  border-radius: variables.$border-radius-sm;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.6rem;
+  font-size: variables.$font-size-sm;
+  text-align: left;
+  @include mixins.transition((background-color, border-color, color));
+
+  &:hover {
+    background: var(--surface-2);
+    border-color: var(--border-muted);
+    color: var(--text-primary);
+  }
+}
+
+.fileItemActive {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-muted));
+  color: var(--text-primary);
+}

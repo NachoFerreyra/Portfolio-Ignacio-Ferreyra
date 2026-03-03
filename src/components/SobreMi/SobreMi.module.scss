@@ -1,0 +1,72 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.sobreMi {
+  padding: clamp(1rem, 2vw, 1.8rem);
+  display: grid;
+  gap: variables.$space-l;
+}
+
+.intro {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-s;
+
+  h1 {
+    color: var(--accent);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  }
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: variables.$space-m;
+
+  @include mixins.media-down(variables.$breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  @include mixins.code-card;
+  padding: variables.$space-l;
+  display: grid;
+  gap: variables.$space-s;
+
+  h2 {
+    font-size: 1rem;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-xs;
+
+  span {
+    border: 1px solid var(--border-muted);
+    border-radius: variables.$border-radius-xxl;
+    padding: 0.15rem 0.55rem;
+    font-size: variables.$font-size-xs;
+    color: var(--text-muted);
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-xs;
+
+  span {
+    background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+    border-radius: variables.$border-radius-sm;
+    padding: 0.2rem 0.45rem;
+    font-size: variables.$font-size-xs;
+  }
+}
+
+.closure {
+  color: var(--text-muted);
+}

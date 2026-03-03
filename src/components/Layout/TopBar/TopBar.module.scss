@@ -1,0 +1,72 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.topBar {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: variables.$space-m;
+  padding: 0 variables.$space-l;
+  border-bottom: 1px solid var(--border-muted);
+  background: color-mix(in srgb, var(--surface-1) 92%, transparent);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: variables.$space-xs;
+  min-width: 0;
+}
+
+.brandDot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0.6rem color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.brandText {
+  font-size: variables.$font-size-sm;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: variables.$space-xs;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  gap: variables.$space-2xs;
+  border: 1px solid var(--border-muted);
+  border-radius: variables.$border-radius-sm;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  padding: 0.35rem 0.55rem;
+  font-size: variables.$font-size-xs;
+  @include mixins.transition((background-color, border-color, color));
+
+  &:hover {
+    background: var(--surface-3);
+    border-color: var(--border-strong);
+  }
+}
+
+@include mixins.media-down(variables.$breakpoint-md) {
+  .brandText {
+    max-width: 11rem;
+  }
+
+  .iconButton {
+    span {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@use "@/styles/variables" as variables;
+@use "@/styles/mixins";
+
+.shell {
+  background: var(--surface-0);
+}
+
+.workspace {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  background: var(--surface-0);
+}
+
+.editor {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border-muted);
+  background: var(--editor-surface);
+}
+
+.editorContent {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--editor-surface) 94%, transparent) 0%,
+    var(--editor-surface) 100%
+  );
+}
+
+@include mixins.media-down(variables.$breakpoint-md) {
+  .editor {
+    border-left: none;
+  }
+}

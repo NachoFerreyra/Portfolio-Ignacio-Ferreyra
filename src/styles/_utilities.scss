@@ -1,0 +1,42 @@
+@use "variables";
+@use "mixins";
+
+.u-app-shell {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+
+  & > main {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+}
+
+.u-container {
+  max-width: variables.$breakpoint-xl;
+  margin-inline: auto;
+  padding-inline: 5%;
+}
+
+.u-card {
+  @include mixins.code-card;
+  padding: variables.$space-xl;
+}
+
+.u-text-muted {
+  color: var(--text-muted);
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-chip {
+  border-radius: variables.$border-radius-xxl;
+  border: 1px solid var(--border-muted);
+  background: color-mix(in srgb, var(--surface-2) 85%, transparent);
+  padding: 0.2rem 0.6rem;
+  font-size: variables.$font-size-xs;
+}

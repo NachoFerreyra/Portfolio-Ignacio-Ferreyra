@@ -1,0 +1,26 @@
+@use "sass:color";
+@use "variables";
+
+@function shade($color, $percentage) {
+  @return color.mix(variables.$color-black, $color, $percentage);
+}
+
+@function darken($color, $percentage) {
+  @return color.adjust($color, $lightness: -$percentage);
+}
+
+@function tint($color, $percentage) {
+  @return color.mix(variables.$color-white, $color, $percentage);
+}
+
+@function get-contrast-text-color($background-color) {
+  $lightness: color.red($background-color) * 0.299 +
+    color.green($background-color) * 0.587 +
+    color.blue($background-color) * 0.114;
+
+  @if $lightness > 186 {
+    @return variables.$color-black;
+  }
+
+  @return variables.$color-white;
+}
