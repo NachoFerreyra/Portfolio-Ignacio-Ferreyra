@@ -1,27 +1,41 @@
 import { profile } from "@/data/profile";
-import { projects } from "@/data/projects";
-import JourneyBlock from "./JourneyBlock";
 import styles from "./SobreMi.module.scss";
 
 const SobreMi = () => {
+  const sections = [
+    {
+      title: "Formacion",
+      className: styles.titleGreen,
+      items: profile.about.education,
+    },
+    {
+      title: "Experiencia",
+      className: styles.titleBlue,
+      items: profile.about.experience,
+    },
+    {
+      title: "Intereses",
+      className: styles.titlePurple,
+      items: profile.about.interests,
+    },
+  ];
+
   return (
     <section className={styles.sobreMi}>
-      <article className={styles.intro}>
-        <h1>function sobreMi() {'{'}</h1>
-        <p>{profile.summary}</p>
-        <p>
-          Trabajo con una mentalidad orientada a producto: analisis del problema,
-          estructura mantenible y entrega iterativa.
-        </p>
-      </article>
+      <h1>Sobre mi</h1>
 
-      <div className={styles.timeline}>
-        {projects.map((project) => (
-          <JourneyBlock key={project.id} project={project} />
+      <div className={styles.grid}>
+        {sections.map((section) => (
+          <article key={section.title} className={styles.card}>
+            <h2 className={section.className}>{section.title}</h2>
+            <ul>
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
         ))}
       </div>
-
-      <p className={styles.closure}>{'}'}</p>
     </section>
   );
 };

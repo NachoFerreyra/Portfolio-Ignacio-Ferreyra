@@ -12,9 +12,10 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-xs;
+  border-left: 3px solid var(--syntax-function);
 
   h1 {
-    color: var(--accent);
+    color: var(--syntax-function);
     font-size: clamp(1.05rem, 1.8vw, 1.4rem);
   }
 }
@@ -29,6 +30,11 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-s;
+  background: linear-gradient(
+    130deg,
+    color-mix(in srgb, var(--surface-2) 70%, transparent) 0%,
+    color-mix(in srgb, var(--editor-surface) 90%, transparent) 100%
+  );
 }
 
 .cardHeader {
@@ -42,6 +48,7 @@
     align-items: center;
     gap: variables.$space-xs;
     font-size: 1.05rem;
+    color: var(--syntax-property);
   }
 
   button {
@@ -54,12 +61,18 @@
     gap: variables.$space-2xs;
     padding: 0.3rem 0.6rem;
     font-size: variables.$font-size-xs;
+    @include mixins.transition((background-color, border-color, color));
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border-muted));
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 15%, var(--surface-2));
+    }
   }
 }
 
 .stack,
-.metrics,
-.routes {
+.metrics {
   display: flex;
   flex-wrap: wrap;
   gap: variables.$space-xs;
@@ -71,6 +84,7 @@
   border-radius: variables.$border-radius-xxl;
   padding: 0.2rem 0.5rem;
   font-size: variables.$font-size-xs;
+  background: color-mix(in srgb, var(--surface-2) 80%, transparent);
 }
 
 .details {
@@ -81,7 +95,7 @@
 
   h3 {
     font-size: 0.95rem;
-    color: var(--text-primary);
+    color: var(--syntax-string);
   }
 
   ul {
@@ -91,15 +105,12 @@
     li {
       color: var(--text-secondary);
       font-size: variables.$font-size-sm;
-    }
-  }
 
-  code {
-    border-radius: variables.$border-radius-sm;
-    border: 1px solid var(--border-muted);
-    padding: 0.2rem 0.4rem;
-    color: var(--accent);
-    font-size: variables.$font-size-xs;
+      &::before {
+        content: "▸ ";
+        color: var(--syntax-function);
+      }
+    }
   }
 }
 

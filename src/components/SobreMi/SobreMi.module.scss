@@ -5,28 +5,25 @@
   padding: clamp(1rem, 2vw, 1.8rem);
   display: grid;
   gap: variables.$space-l;
-}
-
-.intro {
-  @include mixins.code-card;
-  padding: variables.$space-l;
-  display: grid;
-  gap: variables.$space-s;
 
   h1 {
-    color: var(--accent);
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-size: clamp(1.08rem, 1.8vw, 1.45rem);
+
+    span {
+      color: var(--syntax-keyword);
+      font-weight: 500;
+    }
+
+    strong {
+      color: var(--syntax-function);
+      font-weight: 600;
+    }
   }
 }
 
-.timeline {
+.grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: variables.$space-m;
-
-  @include mixins.media-down(variables.$breakpoint-lg) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .card {
@@ -34,37 +31,38 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-s;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--surface-2) 65%, transparent) 0%,
+    color-mix(in srgb, var(--editor-surface) 88%, transparent) 100%
+  );
 
-  h2 {
-    font-size: 1rem;
+  ul {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  li {
+    color: var(--text-secondary);
+    font-size: variables.$font-size-sm;
+
+    &::before {
+      content: "• ";
+      color: var(--syntax-property);
+    }
   }
 }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: variables.$space-xs;
-
-  span {
-    border: 1px solid var(--border-muted);
-    border-radius: variables.$border-radius-xxl;
-    padding: 0.15rem 0.55rem;
-    font-size: variables.$font-size-xs;
-    color: var(--text-muted);
-  }
+.titleGreen {
+  color: #47d18b;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: variables.$space-xs;
+.titleBlue {
+  color: #58a6ff;
+}
 
-  span {
-    background: color-mix(in srgb, var(--surface-2) 70%, transparent);
-    border-radius: variables.$border-radius-sm;
-    padding: 0.2rem 0.45rem;
-    font-size: variables.$font-size-xs;
-  }
+.titlePurple {
+  color: #c792ea;
 }
 
 .closure {

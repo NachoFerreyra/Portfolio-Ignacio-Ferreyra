@@ -2,35 +2,45 @@
 @import "modern-normalize/modern-normalize.css";
 
 :root {
-  --surface-0: #{variables.$vscode-light-0};
-  --surface-1: #{variables.$vscode-light-1};
-  --surface-2: #{variables.$vscode-light-2};
-  --surface-3: #{variables.$vscode-light-3};
-  --editor-surface: #{variables.$vscode-editor-light};
-  --text-primary: #1f1f1f;
-  --text-secondary: #555;
-  --text-muted: #777;
-  --border-muted: #d8d6d3;
-  --border-strong: #bdbbb7;
-  --accent: #{variables.$vscode-blue};
-  --success: #{variables.$color-success};
-  --danger: #{variables.$color-error};
+  --surface-0: #f6f7fb;
+  --surface-1: #ffffff;
+  --surface-2: #eef1f8;
+  --surface-3: #e1e7f3;
+  --editor-surface: #ffffff;
+  --text-primary: #1d2333;
+  --text-secondary: #3d4660;
+  --text-muted: #68708a;
+  --border-muted: #d6ddeb;
+  --border-strong: #b9c4da;
+  --accent: #0e9f6e;
+  --success: #128058;
+  --danger: #d14343;
+  --syntax-keyword: #d97706;
+  --syntax-function: #2563eb;
+  --syntax-property: #0ea5e9;
+  --syntax-string: #16a34a;
+  --syntax-green: #0e9f6e;
 }
 
 :root[data-theme="dark"] {
-  --surface-0: #{variables.$vscode-dark-0};
-  --surface-1: #{variables.$vscode-dark-1};
-  --surface-2: #{variables.$vscode-dark-2};
-  --surface-3: #{variables.$vscode-dark-3};
-  --editor-surface: #{variables.$vscode-editor-dark};
-  --text-primary: #e6e6e6;
-  --text-secondary: #b9bcc5;
-  --text-muted: #8f93a2;
-  --border-muted: #323540;
-  --border-strong: #404552;
-  --accent: #{variables.$vscode-blue-soft};
-  --success: #4cc38a;
+  --surface-0: #0f1320;
+  --surface-1: #171d2d;
+  --surface-2: #1f2740;
+  --surface-3: #2b3554;
+  --editor-surface: #111827;
+  --text-primary: #e7ecff;
+  --text-secondary: #b7c3e6;
+  --text-muted: #8c99bf;
+  --border-muted: #2a3557;
+  --border-strong: #3b4a74;
+  --accent: #33d69f;
+  --success: #42d392;
   --danger: #f17e7e;
+  --syntax-keyword: #ffb84d;
+  --syntax-function: #61a4ff;
+  --syntax-property: #6ee7ff;
+  --syntax-string: #9ae66e;
+  --syntax-green: #33d69f;
 }
 
 * {

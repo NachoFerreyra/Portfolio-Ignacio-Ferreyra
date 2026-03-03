@@ -29,7 +29,7 @@ const ContactForm = ({ email, status, setStatus }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label>
-        const nombre =
+        Nombre
         <input
           type="text"
           value={form.name}
@@ -39,7 +39,7 @@ const ContactForm = ({ email, status, setStatus }) => {
       </label>
 
       <label>
-        const email =
+        Email
         <input
           type="email"
           value={form.from}
@@ -49,32 +49,32 @@ const ContactForm = ({ email, status, setStatus }) => {
       </label>
 
       <label>
-        const mensaje =
+        Mensaje
         <textarea
           rows={6}
           value={form.message}
           onChange={(event) =>
             setForm({ ...form, message: event.target.value })
           }
-          placeholder="Contame sobre el proyecto"
+          placeholder="Contame brevemente tu idea o necesidad"
         />
       </label>
 
       {status === "error" ? (
         <p className={styles.error}>
-          Completa todos los campos antes de enviar.
+          Completa nombre, email y mensaje antes de enviar.
         </p>
       ) : null}
 
       {status === "success" ? (
         <p className={styles.success}>
-          Cliente de correo abierto para enviar el mensaje.
+          Se abrio tu cliente de correo con el mensaje cargado.
         </p>
       ) : null}
 
       <button type="submit">
         <Send size={16} />
-        Enviar
+        Enviar mensaje
       </button>
     </form>
   );

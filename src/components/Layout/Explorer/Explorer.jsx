@@ -21,8 +21,8 @@ const Explorer = ({ files, activeFileId, onOpenFile }) => {
   return (
     <aside className={styles.explorer}>
       <header className={styles.header}>
-        <span>EXPLORER</span>
-        <small>PORTFOLIO-IGNACIO</small>
+        <span>ARCHIVOS</span>
+        <small>ignacio-portfolio</small>
       </header>
 
       <div className={styles.fileList}>

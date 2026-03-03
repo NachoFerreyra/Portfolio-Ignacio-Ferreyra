@@ -1,5 +1,31 @@
 export const projects = [
   {
+    id: "portfolio-ignacio",
+    name: "Portfolio Ignacio Ferreyra",
+    type: "Portfolio personal interactivo",
+    summary:
+      "Portfolio inspirado en Visual Studio Code para presentar perfil profesional y proyectos reales con una navegacion orientada a archivos.",
+    stack: [
+      "React",
+      "Vite",
+      "React Router",
+      "Sass Modules",
+      "Lucide React",
+    ],
+    highlights: [
+      "Interfaz tipo editor con explorer, tabs y barra de estado.",
+      "Arquitectura por rutas y componentes desacoplados por seccion.",
+      "Contenido dinamico desde data files para edicion rapida.",
+      "Modo claro/oscuro y enfoque visual de portfolio tecnico.",
+    ],
+    architecture: {
+      codeFiles: 90,
+      scssFiles: 15,
+      components: 30,
+      pages: 6,
+    },
+  },
+  {
     id: "estetica-web",
     name: "Estetica CG - Web",
     type: "Producto web para clientes",
@@ -22,18 +48,10 @@ export const projects = [
       "Paginas comerciales, legales y de contacto integradas al mismo shell.",
     ],
     architecture: {
-      sourcePath: "F:/Visual Code/Estetica CG/esteticacg sin nodemodule/src",
       codeFiles: 226,
       scssFiles: 110,
       components: 122,
       pages: 26,
-      routes: [
-        "/",
-        "/tratamientos",
-        "/equipos-cg",
-        "/eleccion-servicio/:categorySlug/:journeySlug/:treatmentSlug",
-        "/resumen-cita",
-      ],
     },
   },
   {
@@ -41,7 +59,7 @@ export const projects = [
     name: "Estetica CG - Admin",
     type: "Backoffice operativo",
     summary:
-      "Panel administrativo de alta complejidad para agenda, ventas, catalogo, promociones y configuracion integral.",
+      "Panel administrativo para agenda, ventas, catalogo, promociones y configuracion integral.",
     stack: [
       "React",
       "Vite",
@@ -60,20 +78,10 @@ export const projects = [
       "Settings anidados para negocio, integraciones, templates y horarios.",
     ],
     architecture: {
-      sourcePath: "F:/Visual Code/Estetica CG/estetica-admin sin node modules/src",
       codeFiles: 432,
       scssFiles: 205,
       components: 262,
       pages: 25,
-      routes: [
-        "/appointments/agenda",
-        "/clients",
-        "/professionals",
-        "/catalog",
-        "/sales/:section",
-        "/analytics/:section",
-        "/settings/*",
-      ],
     },
   },
   {
@@ -94,15 +102,13 @@ export const projects = [
       "Catalogo por categorias: casas, apartamentos, bodegas y fincas.",
       "Filtro compuesto con sliders y orden por precio/area.",
       "Modal de propiedad con galeria, datos clave y CTA comercial.",
-      "Arquitectura limpia con pages, components, routes y estilos compartidos.",
+      "Arquitectura limpia con pages, components y estilos compartidos.",
     ],
     architecture: {
-      sourcePath: "F:/Visual Code/MSBienesRaices/src",
       codeFiles: 31,
       scssFiles: 20,
       components: 19,
       pages: 7,
-      routes: ["/", "/casas", "/apartamentos", "/bodegas", "/fincas", "/contacto"],
     },
   },
 ];

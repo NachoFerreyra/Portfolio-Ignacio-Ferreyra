@@ -1,4 +1,4 @@
-import { skills } from "../../data/skills";
+import { skills } from "@/data/skills";
 import SkillGroup from "./SkillGroup";
 import styles from "./Habilidades.module.scss";
 
@@ -13,12 +13,10 @@ const Habilidades = () => {
   return (
     <section className={styles.habilidades}>
       <header className={styles.header}>
-        <h1>const habilidades = {"{"}</h1>
+        <h1>Habilidades principales</h1>
         <p>
-          "Habilidades formadas entre la facultad de Sistemas y el desarrollo de
-          productos reales con React, donde aprendí a combinar el análisis de
-          requerimientos con la construcción de dashboards y aplicaciones
-          comerciales.
+          Conjunto de herramientas y conocimientos que aplico en proyectos de
+          producto: desde analisis y diseño hasta implementacion y mantenimiento.
         </p>
       </header>
 
@@ -31,8 +29,6 @@ const Habilidades = () => {
           />
         ))}
       </div>
-
-      <p className={styles.closure}>{"};"}</p>
     </section>
   );
 };

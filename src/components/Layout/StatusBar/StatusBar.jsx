@@ -6,9 +6,9 @@ const StatusBar = ({ activeFile, tabsCount }) => {
     <footer className={styles.statusBar}>
       <div className={styles.left}>
         <GitBranch size={14} />
-        <span>main</span>
+        <span>portfolio-live</span>
         <CheckCircle2 size={14} />
-        <span>{tabsCount} pestañas</span>
+        <span>{tabsCount} pestañas abiertas</span>
       </div>
 
       <div className={styles.right}>

@@ -12,9 +12,11 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-xs;
+  border-left: 3px solid var(--syntax-green);
 
   h2 {
     font-size: 1.1rem;
+    color: var(--syntax-green);
   }
 }
 
@@ -42,11 +44,39 @@
   gap: variables.$space-2xs;
   padding: variables.$space-l;
   color: var(--text-primary);
-  background: color-mix(in srgb, var(--editor-surface) 90%, transparent);
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--editor-surface) 90%, transparent) 0%,
+    color-mix(in srgb, var(--surface-2) 65%, transparent) 100%
+  );
 
   em {
-    color: #cf8ef4;
+    color: var(--syntax-keyword);
     font-style: normal;
+  }
+
+  strong {
+    color: var(--syntax-property);
+    font-weight: 500;
+  }
+}
+
+.inlineData {
+  padding: 0 variables.$space-l variables.$space-s;
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-s;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: variables.$space-2xs;
+    border: 1px solid var(--border-muted);
+    background: color-mix(in srgb, var(--surface-2) 75%, transparent);
+    border-radius: variables.$border-radius-xxl;
+    padding: 0.25rem 0.6rem;
+    font-size: variables.$font-size-xs;
+    color: var(--text-secondary);
   }
 }
 
@@ -64,42 +94,13 @@
     border-radius: variables.$border-radius-sm;
     padding: 0.42rem 0.7rem;
     background: var(--surface-2);
-    @include mixins.transition((background-color, border-color));
+    color: var(--text-primary);
+    @include mixins.transition((background-color, border-color, color));
 
     &:hover {
-      background: var(--surface-3);
-      border-color: var(--border-strong);
+      background: color-mix(in srgb, var(--accent) 20%, var(--surface-2));
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--border-muted));
+      color: var(--accent);
     }
-  }
-}
-
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: variables.$space-m;
-
-  @include mixins.media-down(variables.$breakpoint-lg) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @include mixins.media-down(variables.$breakpoint-sm) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.metricCard {
-  @include mixins.code-card;
-  padding: variables.$space-l;
-  display: grid;
-  gap: variables.$space-2xs;
-
-  strong {
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    color: var(--accent);
-  }
-
-  span {
-    color: var(--text-secondary);
-    font-size: variables.$font-size-sm;
   }
 }

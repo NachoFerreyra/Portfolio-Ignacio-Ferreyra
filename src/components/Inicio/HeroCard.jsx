@@ -1,44 +1,52 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, UserCheck } from "lucide-react";
 import styles from "./Inicio.module.scss";
 
 const HeroCard = ({ profile }) => {
   return (
     <article className={styles.heroCard}>
       <div className={styles.codeHeader}>
-        <span>portfolio.config.js</span>
+        <span>inicio.jsx</span>
       </div>
 
       <pre className={styles.codeBlock}>
         <span>
-          <em>const</em> developer = {"{"}
+          <em>const</em> desarrollador = {"{"}
         </span>
         <span>
-          {"  "}name: "{profile.name}",
+          {"  "}<strong>nombre</strong>: "{profile.name}",
         </span>
         <span>
-          {"  "}role: "{profile.role}",
+          {"  "}<strong>rol</strong>: "{profile.role}",
         </span>
         <span>
-          {"  "}location: "{profile.location}",
+          {"  "}<strong>ubicacion</strong>: "{profile.location}",
         </span>
         <span>
-          {"  "}availability: "{profile.availability}",
+          {"  "}<strong>estado</strong>: "{profile.availability}",
         </span>
         <span>{"}"};</span>
       </pre>
 
+      <div className={styles.inlineData}>
+        <span>
+          <MapPin size={14} /> {profile.location}
+        </span>
+        <span>
+          <UserCheck size={14} /> {profile.availability}
+        </span>
+      </div>
+
+      <p>{profile.summary}</p>
+
       <div className={styles.links}>
         <a href={profile.contacts.github} target="_blank" rel="noreferrer">
-          <Github size={16} />
-          GitHub
+          <Github size={16} /> GitHub
         </a>
         <a href={profile.contacts.linkedin} target="_blank" rel="noreferrer">
-          <Linkedin size={16} />
-          LinkedIn
+          <Linkedin size={16} /> LinkedIn
         </a>
         <a href={`mailto:${profile.contacts.email}`}>
-          <Mail size={16} />
-          Email
+          <Mail size={16} /> Email
         </a>
       </div>
     </article>

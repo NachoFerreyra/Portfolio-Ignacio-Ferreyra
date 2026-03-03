@@ -7,32 +7,12 @@
   gap: variables.$space-l;
 
   h1 {
-    color: var(--accent);
+    color: var(--syntax-function);
     font-size: clamp(1.3rem, 2.1vw, 1.8rem);
   }
 
   p {
     max-width: 72ch;
-  }
-
-  strong {
-    color: var(--text-primary);
-    margin-left: 0.2rem;
-  }
-
-  code {
-    color: var(--accent);
-    margin-inline: 0.2rem;
-  }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: variables.$space-m;
-
-  @include mixins.media-down(variables.$breakpoint-md) {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -41,29 +21,34 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-s;
+  border-left: 3px solid var(--syntax-property);
 
   h2 {
     font-size: 1rem;
-    color: var(--text-primary);
+    color: var(--syntax-property);
   }
 
-  pre {
-    margin: 0;
-    color: var(--accent);
+  ul {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  li {
+    color: var(--text-secondary);
     font-size: variables.$font-size-sm;
+  }
+
+  a {
+    color: var(--accent);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .tip {
   border-left: 3px solid var(--accent);
   padding-left: variables.$space-m;
-}
-
-.primaryLink {
-  display: inline-flex;
-  width: fit-content;
-  border: 1px solid var(--accent);
-  border-radius: variables.$border-radius-sm;
   color: var(--text-primary);
-  padding: 0.45rem 0.75rem;
 }

@@ -1,6 +1,16 @@
 import { ChevronDown, ChevronUp, FolderGit2 } from "lucide-react";
 import styles from "./Proyectos.module.scss";
 
+const toApprox = (value) => {
+  if (value >= 400) return "+400";
+  if (value >= 300) return "+300";
+  if (value >= 200) return "+200";
+  if (value >= 100) return "+100";
+  if (value >= 50) return "+50";
+  if (value >= 20) return "+20";
+  return `+${value}`;
+};
+
 const ProjectCard = ({ project, isExpanded, onToggle }) => {
   return (
     <article className={styles.card}>
@@ -11,7 +21,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
         </h2>
         <button type="button" onClick={onToggle}>
           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-          {isExpanded ? "Ocultar" : "Ver detalle"}
+          {isExpanded ? "Ocultar detalle" : "Ver detalle"}
         </button>
       </div>
 
@@ -25,26 +35,19 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
 
       {isExpanded ? (
         <div className={styles.details}>
-          <h3>Highlights</h3>
+          <h3>Puntos destacados</h3>
           <ul>
             {project.highlights.map((feature) => (
               <li key={feature}>{feature}</li>
             ))}
           </ul>
 
-          <h3>Arquitectura</h3>
+          <h3>Escala del proyecto</h3>
           <div className={styles.metrics}>
-            <span>{project.architecture.codeFiles} archivos de codigo</span>
-            <span>{project.architecture.scssFiles} archivos SCSS</span>
-            <span>{project.architecture.components} componentes</span>
-            <span>{project.architecture.pages} pages</span>
-          </div>
-
-          <h3>Rutas clave</h3>
-          <div className={styles.routes}>
-            {project.architecture.routes.map((route) => (
-              <code key={route}>{route}</code>
-            ))}
+            <span>{toApprox(project.architecture.codeFiles)} archivos de codigo</span>
+            <span>{toApprox(project.architecture.scssFiles)} archivos SCSS</span>
+            <span>{toApprox(project.architecture.components)} componentes</span>
+            <span>{toApprox(project.architecture.pages)} pages</span>
           </div>
         </div>
       ) : null}

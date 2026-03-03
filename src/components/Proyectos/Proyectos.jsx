@@ -4,15 +4,15 @@ import ProjectCard from "./ProjectCard";
 import styles from "./Proyectos.module.scss";
 
 const Proyectos = () => {
-  const [expandedProjectId, setExpandedProjectId] = useState(projects[0]?.id || null);
+  const [expandedProjectId, setExpandedProjectId] = useState(null);
 
   return (
     <section className={styles.proyectos}>
       <header className={styles.header}>
-        <h1>const proyectos = [</h1>
+        <h1>Proyectos seleccionados</h1>
         <p>
-          Base de proyectos reales utilizada para este portfolio. Cada card resume
-          arquitectura, stack y funcionalidades implementadas.
+          Una muestra de trabajos donde participe en diseño de interfaz,
+          estructura y desarrollo frontend.
         </p>
       </header>
 
@@ -30,8 +30,6 @@ const Proyectos = () => {
           />
         ))}
       </div>
-
-      <p className={styles.footer}>];</p>
     </section>
   );
 };
