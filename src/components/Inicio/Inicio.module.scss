@@ -42,13 +42,8 @@
   margin: 0;
   display: grid;
   gap: variables.$space-2xs;
-  padding: variables.$space-l;
   color: var(--text-primary);
-  background: linear-gradient(
-    140deg,
-    color-mix(in srgb, var(--editor-surface) 90%, transparent) 0%,
-    color-mix(in srgb, var(--surface-2) 65%, transparent) 100%
-  );
+  min-width: 0;
 
   em {
     color: var(--syntax-keyword);
@@ -59,6 +54,62 @@
     color: var(--syntax-property);
     font-weight: 500;
   }
+}
+
+.codePanel {
+  padding: variables.$space-l;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: variables.$space-l;
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--editor-surface) 90%, transparent) 0%,
+    color-mix(in srgb, var(--surface-2) 65%, transparent) 100%
+  );
+
+  @include mixins.media-down(variables.$breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: variables.$space-m;
+  }
+}
+
+.avatarPanel {
+  display: flex;
+  justify-content: flex-end;
+
+  @include mixins.media-down(variables.$breakpoint-md) {
+    justify-content: flex-start;
+  }
+}
+
+.avatarFrame {
+  width: clamp(7rem, 14vw, 11rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: variables.$border-radius-md;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border-muted));
+  background: color-mix(in srgb, var(--surface-2) 82%, transparent);
+  display: grid;
+  place-items: center;
+
+  @include mixins.media-down(variables.$breakpoint-md) {
+    width: clamp(6.2rem, 35vw, 8rem);
+  }
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+.avatarFallback {
+  font-family: variables.$font-family-headings;
+  font-size: clamp(1.5rem, 2.8vw, 2.3rem);
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--text-primary) 88%, white);
 }
 
 .inlineData {

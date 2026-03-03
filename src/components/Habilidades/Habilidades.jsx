@@ -4,19 +4,23 @@ import styles from "./Habilidades.module.scss";
 
 const Habilidades = () => {
   const groups = [
-    { title: "Frontend", items: skills.frontend },
-    { title: "Backend & Data", items: skills.backendAndData },
-    { title: "Analysis & Design", items: skills.analysisAndDesign },
-    { title: "Tooling", items: skills.tooling },
+    { title: "Lenguajes", items: skills.languages },
+    { title: "Metodologias", items: skills.methodologies },
+    { title: "Frontend", items: skills.frontendCv || skills.frontend },
+    { title: "Bases de datos", items: skills.databases },
+    { title: "Herramientas", items: skills.toolsCv },
+    { title: "Analisis y diseño", items: skills.analysisAndDesign },
+    { title: "Arquitectura y mantenimiento", items: skills.backendAndData },
   ].filter((group) => Array.isArray(group.items) && group.items.length);
 
   return (
     <section className={styles.habilidades}>
       <header className={styles.header}>
-        <h1>Habilidades principales</h1>
+        <h1>Habilidades tecnicas</h1>
         <p>
-          Conjunto de herramientas y conocimientos que aplico en proyectos de
-          producto: desde analisis y diseño hasta implementacion y mantenimiento.
+          Base tecnica construida entre la carrera y proyectos reales,
+          combinando desarrollo frontend, analisis funcional y trabajo en
+          equipo.
         </p>
       </header>
 

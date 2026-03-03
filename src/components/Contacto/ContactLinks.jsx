@@ -1,7 +1,7 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import styles from "./Contacto.module.scss";
 
-const ContactLinks = ({ contacts }) => {
+const ContactLinks = ({ contacts, phone }) => {
   return (
     <aside className={styles.linksCard}>
       <h2>Canales directos</h2>
@@ -21,6 +21,13 @@ const ContactLinks = ({ contacts }) => {
           <Linkedin size={16} />
           {contacts.linkedin}
         </a>
+
+        {phone ? (
+          <a href={`tel:${phone.replace(/\s+/g, "")}`}>
+            <Phone size={16} />
+            {phone}
+          </a>
+        ) : null}
       </div>
     </aside>
   );

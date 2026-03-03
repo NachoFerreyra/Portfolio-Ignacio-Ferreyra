@@ -8,16 +8,7 @@
 
   h1 {
     font-size: clamp(1.08rem, 1.8vw, 1.45rem);
-
-    span {
-      color: var(--syntax-keyword);
-      font-weight: 500;
-    }
-
-    strong {
-      color: var(--syntax-function);
-      font-weight: 600;
-    }
+    color: var(--syntax-function);
   }
 }
 
@@ -45,12 +36,17 @@
   li {
     color: var(--text-secondary);
     font-size: variables.$font-size-sm;
+    line-height: 1.45;
 
     &::before {
       content: "• ";
       color: var(--syntax-property);
     }
   }
+}
+
+.titleCyan {
+  color: #3ec7ff;
 }
 
 .titleGreen {
@@ -61,10 +57,10 @@
   color: #58a6ff;
 }
 
-.titlePurple {
-  color: #c792ea;
+.titleOrange {
+  color: #ffb84d;
 }
 
-.closure {
-  color: var(--text-muted);
+.titlePurple {
+  color: #c792ea;
 }

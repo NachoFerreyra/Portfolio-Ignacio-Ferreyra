@@ -1,4 +1,5 @@
 export const skills = {
+  // Bloques originales (se mantienen)
   frontend: [
     "React",
     "React Router",
@@ -16,7 +17,7 @@ export const skills = {
     "Flujos de negocio por rutas",
   ],
   analysisAndDesign: [
-    "Análisis de Sistemas",
+    "Analisis de Sistemas",
     "UML (Casos de Uso, Clases, Secuencia, Flujo)",
     "Modelado de Base de Datos (ER, Relacional)",
     "Prototipado interactivo en Figma",
@@ -30,4 +31,11 @@ export const skills = {
     "Diseño de componentes reutilizables",
     "Debugging y refactor incremental",
   ],
+
+  // Bloques del CV (nuevos)
+  languages: ["JavaScript", "Java", "Python", "C"],
+  methodologies: ["Scrum", "Metodologias Agiles"],
+  frontendCv: ["React", "Vite", "HTML5", "CSS3", "Sass (BEM)", "Material UI"],
+  databases: ["MySQL", "MongoDB"],
+  toolsCv: ["Git", "GitHub", "Postman", "Figma", "UML"],
 };

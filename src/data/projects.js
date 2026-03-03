@@ -4,19 +4,13 @@ export const projects = [
     name: "Portfolio Ignacio Ferreyra",
     type: "Portfolio personal interactivo",
     summary:
-      "Portfolio inspirado en Visual Studio Code para presentar perfil profesional y proyectos reales con una navegacion orientada a archivos.",
-    stack: [
-      "React",
-      "Vite",
-      "React Router",
-      "Sass Modules",
-      "Lucide React",
-    ],
+      "Portfolio inspirado en Visual Studio Code para presentar perfil profesional, proyectos reales y stack tecnico de forma clara.",
+    stack: ["React", "Vite", "React Router", "Sass Modules", "Lucide React"],
     highlights: [
       "Interfaz tipo editor con explorer, tabs y barra de estado.",
       "Arquitectura por rutas y componentes desacoplados por seccion.",
       "Contenido dinamico desde data files para edicion rapida.",
-      "Modo claro/oscuro y enfoque visual de portfolio tecnico.",
+      "Modo claro/oscuro y enfoque visual tecnico sin perder legibilidad.",
     ],
     architecture: {
       codeFiles: 90,
@@ -28,9 +22,9 @@ export const projects = [
   {
     id: "estetica-web",
     name: "Estetica CG - Web",
-    type: "Producto web para clientes",
+    type: "Sistema web y gestion administrativa",
     summary:
-      "Frontend de reserva de turnos, carrito inteligente y catalogo de tratamientos con flujo multi-paso.",
+      "Proyecto en equipo (3 personas) enfocado en analisis funcional, interfaces interactivas en React y flujo de datos entre panel administrativo y cliente.",
     stack: [
       "React",
       "Vite",
@@ -40,12 +34,17 @@ export const projects = [
       "Framer Motion",
       "MUI",
       "Sonner",
+      "BEM",
+      "Figma",
     ],
     highlights: [
+      "Analisis y relevamiento de requerimientos funcionales para definir la logica de negocio.",
+      "Desarrollo de interfaces interactivas con React y Vite orientadas a rendimiento.",
+      "Gestion de estados complejos con Redux para sincronizar panel admin y cliente.",
+      "Maquetacion desde Figma a codigo con SCSS y metodologia BEM para escalabilidad.",
       "Flujo de seleccion de servicios por categoria, jornada y tratamiento.",
       "Shopping cart con cupones, sugerencias de combo y logica de promociones.",
       "Autenticacion y perfil de usuario con historial de turnos.",
-      "Paginas comerciales, legales y de contacto integradas al mismo shell.",
     ],
     architecture: {
       codeFiles: 226,

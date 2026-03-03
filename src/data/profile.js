@@ -1,8 +1,34 @@
 export const profile = {
   name: "Ignacio Ferreyra",
-  role: "Analista Programador Universitario | Frontend Developer",
+  role: "Analista Programador Universitario de Sistemas",
+  headline:
+    "Analista Programador Universitario de Sistemas | Frontend Developer",
   location: "Argentina",
   availability: "Disponible",
+  phone: "+54 2634522248",
+  avatar: {
+    src: "/cv/avatar.jpg",
+    alt: "Foto de Ignacio Ferreyra",
+    position: "50% 35%",
+  },
+  professionalSummary:
+    "Analista Programador Universitario de Sistemas recientemente graduado, con formacion tecnica en desarrollo de aplicaciones y gestion de informacion. Mi experiencia principal se centra en analisis de requerimientos y desarrollo web en proyectos colaborativos, con foco en responsabilidad, adaptacion y aprendizaje continuo.",
+  languages: [
+    { name: "Español", level: "Nativo" },
+    { name: "Ingles", level: "Intermedio (B1)" },
+  ],
+  educationHistory: [
+    {
+      title: "Analista Programador Universitario de Sistemas",
+      institution: "Universidad Champagnat",
+      period: "2022 - 2025",
+    },
+    {
+      title: "Tecnico Agropecuario - Enologo",
+      institution: "Escuela Moises Julio Chade 4-027",
+      period: "2016 - 2021",
+    },
+  ],
   about: {
     education: [
       "Analista Programador Universitario de Sistemas | Universidad Champagnat",

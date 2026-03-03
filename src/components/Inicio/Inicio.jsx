@@ -8,11 +8,10 @@ const Inicio = () => {
       <HeroCard profile={profile} />
 
       <article className={styles.block}>
-        <h2>Bienvenido</h2>
+        <h2>Perfil profesional</h2>
         <p>
-          Este espacio resume mi perfil profesional y una seleccion de proyectos
-          en los que trabaje con foco en calidad de codigo, estructura y experiencia
-          de usuario.
+          {profile.name} es {profile.role} con foco en analisis de requerimientos,
+          desarrollo web colaborativo y construccion de interfaces escalables.
         </p>
       </article>
     </section>

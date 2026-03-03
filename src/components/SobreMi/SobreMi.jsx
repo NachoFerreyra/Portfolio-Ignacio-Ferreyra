@@ -2,23 +2,41 @@ import { profile } from "@/data/profile";
 import styles from "./SobreMi.module.scss";
 
 const SobreMi = () => {
+  const educationItems = (profile.educationHistory || []).map(
+    (item) => `${item.title} - ${item.institution} (${item.period})`,
+  );
+
+  const languageItems = (profile.languages || []).map(
+    (item) => `${item.name}: ${item.level}`,
+  );
+
   const sections = [
     {
-      title: "Formacion",
-      className: styles.titleGreen,
-      items: profile.about.education,
+      title: "Perfil profesional",
+      className: styles.titleCyan,
+      items: [profile.professionalSummary],
     },
     {
-      title: "Experiencia",
+      title: "Formacion academica",
+      className: styles.titleGreen,
+      items: educationItems,
+    },
+    {
+      title: "Experiencia y enfoque",
       className: styles.titleBlue,
       items: profile.about.experience,
+    },
+    {
+      title: "Idiomas",
+      className: styles.titleOrange,
+      items: languageItems,
     },
     {
       title: "Intereses",
       className: styles.titlePurple,
       items: profile.about.interests,
     },
-  ];
+  ].filter((section) => section.items?.length);
 
   return (
     <section className={styles.sobreMi}>

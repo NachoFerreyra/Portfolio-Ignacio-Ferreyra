@@ -22,6 +22,7 @@
 .groups {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: variables.$space-m;
 
   @include mixins.media-down(variables.$breakpoint-lg) {
@@ -34,9 +35,23 @@
   padding: variables.$space-l;
   display: grid;
   gap: variables.$space-s;
+  align-content: start;
+  @include mixins.transition((transform, border-color, box-shadow, background-color));
 
   h2 {
     font-size: 1rem;
+    color: var(--syntax-property);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border-muted));
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 16%, transparent);
+    background: linear-gradient(
+      130deg,
+      color-mix(in srgb, var(--surface-2) 72%, transparent) 0%,
+      color-mix(in srgb, var(--editor-surface) 92%, transparent) 100%
+    );
   }
 }
 
@@ -51,6 +66,15 @@
     border-radius: variables.$border-radius-sm;
     padding: 0.22rem 0.5rem;
     font-size: variables.$font-size-xs;
+    color: var(--text-secondary);
+    @include mixins.transition((background-color, border-color, color, transform));
+
+    &:hover {
+      background: color-mix(in srgb, var(--accent) 20%, var(--surface-2));
+      border-color: color-mix(in srgb, var(--accent) 48%, var(--border-muted));
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
   }
 }
 

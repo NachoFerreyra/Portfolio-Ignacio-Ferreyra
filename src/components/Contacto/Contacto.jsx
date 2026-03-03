@@ -24,7 +24,7 @@ const Contacto = () => {
           status={status}
           setStatus={setStatus}
         />
-        <ContactLinks contacts={profile.contacts} />
+        <ContactLinks contacts={profile.contacts} phone={profile.phone} />
       </div>
     </section>
   );

@@ -35,6 +35,18 @@
     color-mix(in srgb, var(--surface-2) 70%, transparent) 0%,
     color-mix(in srgb, var(--editor-surface) 90%, transparent) 100%
   );
+  @include mixins.transition((transform, border-color, box-shadow, background-color));
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border-muted));
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 16%, transparent);
+    background: linear-gradient(
+      130deg,
+      color-mix(in srgb, var(--surface-2) 68%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 8%, var(--editor-surface)) 100%
+    );
+  }
 }
 
 .cardHeader {
@@ -85,6 +97,17 @@
   padding: 0.2rem 0.5rem;
   font-size: variables.$font-size-xs;
   background: color-mix(in srgb, var(--surface-2) 80%, transparent);
+}
+
+.stack span {
+  @include mixins.transition((background-color, border-color, color, transform));
+
+  &:hover {
+    background: color-mix(in srgb, var(--accent) 20%, var(--surface-2));
+    border-color: color-mix(in srgb, var(--accent) 48%, var(--border-muted));
+    color: var(--text-primary);
+    transform: translateY(-1px);
+  }
 }
 
 .details {
