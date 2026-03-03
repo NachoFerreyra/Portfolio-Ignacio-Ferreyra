@@ -1,10 +1,20 @@
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import styles from "./TopBar.module.scss";
 
-const TopBar = ({ theme, onToggleTheme }) => {
+const TopBar = ({ theme, onToggleTheme, isExplorerOpen, onToggleExplorer }) => {
   return (
     <header className={styles.topBar}>
       <div className={styles.brand}>
+        <button
+          type="button"
+          className={styles.mobileMenuButton}
+          onClick={onToggleExplorer}
+          aria-label={isExplorerOpen ? "Cerrar menu" : "Abrir menu"}
+          aria-expanded={isExplorerOpen}
+        >
+          {isExplorerOpen ? <X size={16} /> : <Menu size={16} />}
+        </button>
+
         <span className={styles.brandDot} />
         <span className={styles.brandText}>Portfolio Ignacio Ferreyra</span>
       </div>

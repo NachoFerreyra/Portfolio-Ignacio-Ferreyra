@@ -10,7 +10,43 @@
   min-height: 0;
 
   @include mixins.media-down(variables.$breakpoint-md) {
-    display: none;
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    height: calc(100dvh - 3rem);
+    width: min(18rem, 88vw);
+    z-index: variables.$z-index-modal;
+    transform: translateX(-100%);
+    @include mixins.transition((transform));
+  }
+}
+
+.explorerOpen {
+  @include mixins.media-down(variables.$breakpoint-md) {
+    transform: translateX(0);
+  }
+}
+
+.mobileOverlay {
+  display: none;
+
+  @include mixins.media-down(variables.$breakpoint-md) {
+    display: block;
+    position: fixed;
+    inset: 3rem 0 0 0;
+    background: rgba(0, 0, 0, 0.35);
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: variables.$z-index-modal-backdrop;
+    @include mixins.transition((opacity));
+  }
+}
+
+.mobileOverlayVisible {
+  @include mixins.media-down(variables.$breakpoint-md) {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 

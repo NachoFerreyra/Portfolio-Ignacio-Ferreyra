@@ -2,9 +2,9 @@
 
 .statusBar {
   min-height: 1.8rem;
-  border-top: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border-muted));
-  background: color-mix(in srgb, var(--accent) 85%, black 0%);
-  color: #f6f6f6;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border-muted));
+  background: color-mix(in srgb, var(--surface-3) 78%, var(--accent) 22%);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;

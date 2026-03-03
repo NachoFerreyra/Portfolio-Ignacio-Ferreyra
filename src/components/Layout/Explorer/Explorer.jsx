@@ -17,33 +17,42 @@ const iconByFileId = {
   contacto: Mail,
 };
 
-const Explorer = ({ files, activeFileId, onOpenFile }) => {
+const Explorer = ({ files, activeFileId, onOpenFile, isOpen, onClose }) => {
   return (
-    <aside className={styles.explorer}>
-      <header className={styles.header}>
-        <span>ARCHIVOS</span>
-        <small>ignacio-portfolio</small>
-      </header>
+    <>
+      <button
+        type="button"
+        className={`${styles.mobileOverlay} ${isOpen ? styles.mobileOverlayVisible : ""}`}
+        onClick={onClose}
+        aria-label="Cerrar explorador"
+      />
 
-      <div className={styles.fileList}>
-        {files.map((file) => {
-          const Icon = iconByFileId[file.id] || FileCode2;
-          const isActive = activeFileId === file.id;
+      <aside className={`${styles.explorer} ${isOpen ? styles.explorerOpen : ""}`}>
+        <header className={styles.header}>
+          <span>ARCHIVOS</span>
+          <small>ignacio-portfolio</small>
+        </header>
 
-          return (
-            <button
-              key={file.id}
-              type="button"
-              className={`${styles.fileItem} ${isActive ? styles.fileItemActive : ""}`}
-              onClick={() => onOpenFile(file.id)}
-            >
-              <Icon size={15} />
-              <span>{file.name}</span>
-            </button>
-          );
-        })}
-      </div>
-    </aside>
+        <div className={styles.fileList}>
+          {files.map((file) => {
+            const Icon = iconByFileId[file.id] || FileCode2;
+            const isActive = activeFileId === file.id;
+
+            return (
+              <button
+                key={file.id}
+                type="button"
+                className={`${styles.fileItem} ${isActive ? styles.fileItemActive : ""}`}
+                onClick={() => onOpenFile(file.id)}
+              >
+                <Icon size={15} />
+                <span>{file.name}</span>
+              </button>
+            );
+          })}
+        </div>
+      </aside>
+    </>
   );
 };
 

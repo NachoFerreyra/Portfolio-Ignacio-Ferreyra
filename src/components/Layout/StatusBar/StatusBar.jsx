@@ -12,8 +12,7 @@ const StatusBar = ({ activeFile, tabsCount }) => {
       </div>
 
       <div className={styles.right}>
-        <span>{activeFile?.name || "README.md"}</span>
-        <span>{activeFile?.language || "markdown"}</span>
+        <span>{activeFile?.name || "Sin archivo abierto"}</span>
       </div>
     </footer>
   );

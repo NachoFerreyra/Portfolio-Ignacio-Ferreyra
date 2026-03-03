@@ -33,6 +33,23 @@
   );
 }
 
+.emptyState {
+  height: 100%;
+  min-height: 16rem;
+  display: grid;
+  place-items: center;
+  padding: variables.$space-l;
+
+  p {
+    color: var(--text-muted);
+    border: 1px dashed var(--border-muted);
+    border-radius: variables.$border-radius-md;
+    padding: variables.$space-s variables.$space-m;
+    background: color-mix(in srgb, var(--surface-2) 65%, transparent);
+    text-align: center;
+  }
+}
+
 @include mixins.media-down(variables.$breakpoint-md) {
   .editor {
     border-left: none;

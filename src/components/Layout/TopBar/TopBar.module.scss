@@ -19,6 +19,24 @@
   min-width: 0;
 }
 
+.mobileMenuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid var(--border-muted);
+  border-radius: variables.$border-radius-sm;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  @include mixins.transition((background-color, border-color, color));
+
+  &:hover {
+    background: var(--surface-3);
+    border-color: var(--border-strong);
+  }
+}
+
 .brandDot {
   width: 0.7rem;
   height: 0.7rem;
@@ -60,6 +78,10 @@
 }
 
 @include mixins.media-down(variables.$breakpoint-md) {
+  .mobileMenuButton {
+    display: inline-flex;
+  }
+
   .brandText {
     max-width: 11rem;
   }

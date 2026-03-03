@@ -24,14 +24,10 @@ const App = () => {
     [location.pathname],
   );
 
-  const [openTabs, setOpenTabs] = useState(["readme"]);
-
-  const tabsWithActive = useMemo(() => {
-    if (!activeFile) return openTabs;
-    return openTabs.includes(activeFile.id)
-      ? openTabs
-      : [...openTabs, activeFile.id];
-  }, [activeFile, openTabs]);
+  const [openTabs, setOpenTabs] = useState(() =>
+    activeFile ? [activeFile.id] : ["readme"],
+  );
+  const [isExplorerOpen, setIsExplorerOpen] = useState(false);
 
   const handleOpenFile = (fileId) => {
     const file = findFileById(fileId);
@@ -41,6 +37,7 @@ const App = () => {
       currentTabs.includes(fileId) ? currentTabs : [...currentTabs, fileId],
     );
     navigate(file.route);
+    setIsExplorerOpen(false);
   };
 
   const handleSelectTab = (fileId) => {
@@ -49,18 +46,14 @@ const App = () => {
   };
 
   const handleCloseTab = (fileId) => {
-    const nextTabs = tabsWithActive.filter((tabId) => tabId !== fileId);
-
-    if (!nextTabs.length) {
-      setOpenTabs(["readme"]);
-      navigate("/");
-      return;
-    }
+    const nextTabs = openTabs.filter((tabId) => tabId !== fileId);
 
     setOpenTabs(nextTabs);
 
     if (activeFile?.id === fileId) {
-      const closedIndex = tabsWithActive.indexOf(fileId);
+      if (!nextTabs.length) return;
+
+      const closedIndex = openTabs.indexOf(fileId);
       const fallbackTab =
         nextTabs[closedIndex - 1] ||
         nextTabs[closedIndex] ||
@@ -69,9 +62,17 @@ const App = () => {
     }
   };
 
+  const isActiveFileOpen = activeFile ? openTabs.includes(activeFile.id) : false;
+  const hasOpenTabs = openTabs.length > 0;
+
   return (
     <div className={`u-app-shell ${styles.shell}`}>
-      <TopBar theme={theme} onToggleTheme={toggleTheme} />
+      <TopBar
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        isExplorerOpen={isExplorerOpen}
+        onToggleExplorer={() => setIsExplorerOpen((currentValue) => !currentValue)}
+      />
 
       <main className={styles.workspace}>
         <ActivityBar />
@@ -80,22 +81,33 @@ const App = () => {
           files={explorerFiles}
           activeFileId={activeFile?.id}
           onOpenFile={handleOpenFile}
+          isOpen={isExplorerOpen}
+          onClose={() => setIsExplorerOpen(false)}
         />
 
         <section className={styles.editor}>
           <TabsBar
             files={explorerFiles}
-            openTabs={tabsWithActive}
+            openTabs={openTabs}
             activeFileId={activeFile?.id}
             onSelectTab={handleSelectTab}
             onCloseTab={handleCloseTab}
           />
 
           <div className={styles.editorContent}>
-            <Outlet />
+            {hasOpenTabs && isActiveFileOpen ? (
+              <Outlet />
+            ) : (
+              <div className={styles.emptyState}>
+                <p>Selecciona alguna opcion del explorador para empezar.</p>
+              </div>
+            )}
           </div>
 
-          <StatusBar activeFile={activeFile} tabsCount={tabsWithActive.length} />
+          <StatusBar
+            activeFile={isActiveFileOpen ? activeFile : null}
+            tabsCount={openTabs.length}
+          />
         </section>
       </main>
     </div>
