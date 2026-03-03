@@ -10,7 +10,6 @@ const Habilidades = () => {
     { title: "Bases de datos", items: skills.databases },
     { title: "Herramientas", items: skills.toolsCv },
     { title: "Analisis y diseño", items: skills.analysisAndDesign },
-    { title: "Arquitectura y mantenimiento", items: skills.backendAndData },
   ].filter((group) => Array.isArray(group.items) && group.items.length);
 
   return (

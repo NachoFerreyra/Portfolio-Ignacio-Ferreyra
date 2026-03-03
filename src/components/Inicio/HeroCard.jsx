@@ -25,19 +25,24 @@ const HeroCard = ({ profile }) => {
             <em>const</em> perfil = {"{"}
           </span>
           <span>
-            {"  "}<strong>nombre</strong>: "{profile.name}",
+            {"  "}
+            <strong>nombre</strong>: "{profile.name}",
           </span>
           <span>
-            {"  "}<strong>rol</strong>: "{profile.role}",
+            {"  "}
+            <strong>rol</strong>: "{profile.role}",
           </span>
           <span>
-            {"  "}<strong>especialidad</strong>: "Frontend + Analisis funcional",
+            {"  "}
+            <strong>especialidad</strong>: "Frontend + Analisis funcional",
           </span>
           <span>
-            {"  "}<strong>ubicacion</strong>: "{profile.location}",
+            {"  "}
+            <strong>ubicacion</strong>: "{profile.location}",
           </span>
           <span>
-            {"  "}<strong>estado</strong>: "{profile.availability}",
+            {"  "}
+            <strong>estado</strong>: "{profile.availability}",
           </span>
           <span>{"}"};</span>
         </pre>
@@ -45,14 +50,18 @@ const HeroCard = ({ profile }) => {
         <aside className={styles.avatarPanel} aria-label="Avatar de perfil">
           <div className={styles.avatarFrame}>
             {showAvatarFallback ? (
-              <span className={styles.avatarFallback}>{avatarInitials || "IF"}</span>
+              <span className={styles.avatarFallback}>
+                {avatarInitials || "IF"}
+              </span>
             ) : (
               <img
                 className={styles.avatarImage}
                 src={avatarSrc}
                 alt={profile.avatar?.alt ?? `Foto de ${profile.name}`}
                 loading="lazy"
-                style={{ objectPosition: profile.avatar?.position ?? "50% 35%" }}
+                style={{
+                  objectPosition: profile.avatar?.position ?? "50% 35%",
+                }}
                 onError={() => setAvatarFailed(true)}
               />
             )}
@@ -71,8 +80,6 @@ const HeroCard = ({ profile }) => {
           <Phone size={14} /> {profile.phone}
         </span>
       </div>
-
-      <p>{profile.professionalSummary}</p>
 
       <div className={styles.links}>
         <a href={profile.contacts.github} target="_blank" rel="noreferrer">

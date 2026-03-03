@@ -9,10 +9,8 @@ const Inicio = () => {
 
       <article className={styles.block}>
         <h2>Perfil profesional</h2>
-        <p>
-          {profile.name} es {profile.role} con foco en analisis de requerimientos,
-          desarrollo web colaborativo y construccion de interfaces escalables.
-        </p>
+
+        <p>{profile.professionalSummary}</p>
       </article>
     </section>
   );

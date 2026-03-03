@@ -1,5 +1,14 @@
 export const skills = {
-  // Bloques originales (se mantienen)
+  languages: ["JavaScript", "Java", "Python", "C"],
+
+  methodologies: ["Metodologias Agiles (Scrum)"],
+
+  frontendCv: ["React", "Vite", "HTML5", "CSS3", "Sass (BEM)", "Material UI"],
+
+  databases: ["MySQL", "MongoDB"],
+
+  toolsCv: ["Git", "GitHub", "Postman"],
+
   frontend: [
     "React",
     "React Router",
@@ -9,33 +18,11 @@ export const skills = {
     "Framer Motion",
     "Responsive Design",
   ],
-  backendAndData: [
-    "API integration",
-    "Modelado de estado complejo",
-    "Mock layers en JSON",
-    "Formularios con validacion",
-    "Flujos de negocio por rutas",
-  ],
+
   analysisAndDesign: [
     "Analisis de Sistemas",
     "UML (Casos de Uso, Clases, Secuencia, Flujo)",
     "Modelado de Base de Datos (ER, Relacional)",
-    "Prototipado interactivo en Figma",
-    "Diseño de Arquitectura",
+    "Figma",
   ],
-  tooling: [
-    "Vite",
-    "ESLint",
-    "Git",
-    "Arquitectura por features",
-    "Diseño de componentes reutilizables",
-    "Debugging y refactor incremental",
-  ],
-
-  // Bloques del CV (nuevos)
-  languages: ["JavaScript", "Java", "Python", "C"],
-  methodologies: ["Scrum", "Metodologias Agiles"],
-  frontendCv: ["React", "Vite", "HTML5", "CSS3", "Sass (BEM)", "Material UI"],
-  databases: ["MySQL", "MongoDB"],
-  toolsCv: ["Git", "GitHub", "Postman", "Figma", "UML"],
 };
