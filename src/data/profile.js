@@ -2,9 +2,7 @@ export const profile = {
   name: "Ignacio Ferreyra",
   role: "Analista Programador Universitario | Frontend Developer",
   location: "Argentina",
-  availability: "Disponible para nuevos proyectos",
-  summary:
-    "Me especializo en construir interfaces claras, escalables y enfocadas en experiencia de usuario, combinando analisis funcional con implementacion tecnica en React.",
+  availability: "Disponible",
   about: {
     education: [
       "Analista Programador Universitario de Sistemas | Universidad Champagnat",

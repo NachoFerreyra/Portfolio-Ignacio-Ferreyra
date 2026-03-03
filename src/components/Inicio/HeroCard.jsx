@@ -13,16 +13,20 @@ const HeroCard = ({ profile }) => {
           <em>const</em> desarrollador = {"{"}
         </span>
         <span>
-          {"  "}<strong>nombre</strong>: "{profile.name}",
+          {"  "}
+          <strong>nombre</strong>: "{profile.name}",
         </span>
         <span>
-          {"  "}<strong>rol</strong>: "{profile.role}",
+          {"  "}
+          <strong>rol</strong>: "{profile.role}",
         </span>
         <span>
-          {"  "}<strong>ubicacion</strong>: "{profile.location}",
+          {"  "}
+          <strong>ubicacion</strong>: "{profile.location}",
         </span>
         <span>
-          {"  "}<strong>estado</strong>: "{profile.availability}",
+          {"  "}
+          <strong>estado</strong>: "{profile.availability}",
         </span>
         <span>{"}"};</span>
       </pre>
@@ -35,8 +39,6 @@ const HeroCard = ({ profile }) => {
           <UserCheck size={14} /> {profile.availability}
         </span>
       </div>
-
-      <p>{profile.summary}</p>
 
       <div className={styles.links}>
         <a href={profile.contacts.github} target="_blank" rel="noreferrer">

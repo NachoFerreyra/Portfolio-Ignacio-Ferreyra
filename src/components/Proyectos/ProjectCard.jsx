@@ -25,8 +25,6 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
         </button>
       </div>
 
-      <p>{project.summary}</p>
-
       <div className={styles.stack}>
         {project.stack.map((tech) => (
           <span key={tech}>{tech}</span>
@@ -44,8 +42,12 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
 
           <h3>Escala del proyecto</h3>
           <div className={styles.metrics}>
-            <span>{toApprox(project.architecture.codeFiles)} archivos de codigo</span>
-            <span>{toApprox(project.architecture.scssFiles)} archivos SCSS</span>
+            <span>
+              {toApprox(project.architecture.codeFiles)} archivos de codigo
+            </span>
+            <span>
+              {toApprox(project.architecture.scssFiles)} archivos SCSS
+            </span>
             <span>{toApprox(project.architecture.components)} componentes</span>
             <span>{toApprox(project.architecture.pages)} pages</span>
           </div>
