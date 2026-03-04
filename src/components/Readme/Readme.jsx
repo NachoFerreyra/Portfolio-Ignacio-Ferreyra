@@ -4,7 +4,7 @@ import styles from "./Readme.module.scss";
 const Readme = () => {
   return (
     <section className={styles.readme}>
-      <h1># Hola, soy {profile.name}</h1>
+      <h1># Bienvenido a mi portfolio!</h1>
 
       <p>
         Este portfolio muestra mi perfil, experiencia tecnica y proyectos en los
