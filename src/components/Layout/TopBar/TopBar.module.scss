@@ -10,6 +10,7 @@
   padding: 0 variables.$space-l;
   border-bottom: 1px solid var(--border-muted);
   background: color-mix(in srgb, var(--surface-1) 92%, transparent);
+  min-height: 50px;
 }
 
 .brand {

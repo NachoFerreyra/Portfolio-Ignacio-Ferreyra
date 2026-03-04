@@ -13,7 +13,6 @@
 
   @include mixins.media-down(variables.$breakpoint-md) {
     position: fixed;
-    top: 3rem;
     left: 0;
     height: calc(100dvh - 3rem);
     width: min(18rem, 88vw);
