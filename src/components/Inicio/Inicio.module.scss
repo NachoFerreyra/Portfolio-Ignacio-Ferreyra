@@ -44,6 +44,9 @@
   gap: variables.$space-2xs;
   color: var(--text-primary);
   min-width: 0;
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 
   em {
     color: var(--syntax-keyword);
@@ -68,7 +71,7 @@
     color-mix(in srgb, var(--surface-2) 65%, transparent) 100%
   );
 
-  @include mixins.media-down(variables.$breakpoint-md) {
+  @include mixins.media-down(variables.$breakpoint-lg) {
     grid-template-columns: 1fr;
     gap: variables.$space-m;
   }
@@ -78,7 +81,7 @@
   display: flex;
   justify-content: flex-end;
 
-  @include mixins.media-down(variables.$breakpoint-md) {
+  @include mixins.media-down(variables.$breakpoint-lg) {
     justify-content: flex-start;
   }
 }
