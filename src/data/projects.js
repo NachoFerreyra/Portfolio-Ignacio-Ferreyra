@@ -1,3 +1,13 @@
+/*Cómo cargar multimedia y links ):
+media: [
+  "/projects/portfolio/01.webp",
+  { src: "/projects/portfolio/02.webp", alt: "Home del proyecto" },
+],
+links: {
+  live: "https://tu-sitio.com",
+  repo: "https://github.com/usuario/repositorio",
+},
+ */
 export const projects = [
   {
     id: "portfolio-ignacio",
@@ -12,11 +22,14 @@ export const projects = [
       "Contenido dinamico desde data files para edicion rapida.",
       "Modo claro/oscuro y enfoque visual tecnico sin perder legibilidad.",
     ],
+    media: [],
+    links: {},
     architecture: {
       codeFiles: 90,
       scssFiles: 15,
       components: 30,
       pages: 6,
+      group: 1,
     },
   },
   {
@@ -46,6 +59,8 @@ export const projects = [
       "Shopping cart con cupones, sugerencias de combo y logica de promociones.",
       "Autenticacion y perfil de usuario con historial de turnos.",
     ],
+    media: [],
+    links: {},
     architecture: {
       codeFiles: 226,
       scssFiles: 110,
@@ -77,6 +92,9 @@ export const projects = [
       "Secciones de analytics y ventas con tablas avanzadas y exportaciones.",
       "Settings anidados para negocio, integraciones, templates y horarios.",
     ],
+
+    media: [],
+    links: {},
     architecture: {
       codeFiles: 432,
       scssFiles: 205,
@@ -105,11 +123,14 @@ export const projects = [
       "Modal de propiedad con galeria, datos clave y CTA comercial.",
       "Arquitectura limpia con pages, components y estilos compartidos.",
     ],
+    media: [],
+    links: {},
     architecture: {
       codeFiles: 31,
       scssFiles: 20,
       components: 19,
       pages: 7,
+      group: 1,
     },
   },
 ];

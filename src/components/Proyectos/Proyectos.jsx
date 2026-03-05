@@ -11,7 +11,7 @@ const Proyectos = () => {
       <header className={styles.header}>
         <h1>Proyectos seleccionados</h1>
         <p>
-          Una muestra de trabajos donde participe en diseño de interfaz,
+          Una muestra de trabajos donde participe en diseno de interfaz,
           estructura y desarrollo frontend.
         </p>
       </header>
@@ -19,7 +19,7 @@ const Proyectos = () => {
       <div className={styles.list}>
         {projects.map((project) => (
           <ProjectCard
-            key={project.id}
+            key={`${project.id}-${expandedProjectId === project.id ? "expanded" : "collapsed"}`}
             project={project}
             isExpanded={expandedProjectId === project.id}
             onToggle={() =>
