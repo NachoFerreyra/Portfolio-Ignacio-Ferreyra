@@ -8,7 +8,6 @@ import {
   getRouteByFileId,
 } from "@/utils/fileMap";
 import TopBar from "@/components/Layout/TopBar/TopBar";
-import ActivityBar from "@/components/Layout/ActivityBar/ActivityBar";
 import Explorer from "@/components/Layout/Explorer/Explorer";
 import TabsBar from "@/components/Layout/TabsBar/TabsBar";
 import StatusBar from "@/components/Layout/StatusBar/StatusBar";
@@ -75,8 +74,6 @@ const App = () => {
       />
 
       <main className={styles.workspace}>
-        <ActivityBar />
-
         <Explorer
           files={explorerFiles}
           activeFileId={activeFile?.id}
