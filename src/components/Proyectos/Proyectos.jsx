@@ -19,7 +19,7 @@ const Proyectos = () => {
       <div className={styles.list}>
         {projects.map((project) => (
           <ProjectCard
-            key={`${project.id}-${expandedProjectId === project.id ? "expanded" : "collapsed"}`}
+            key={project.id}
             project={project}
             isExpanded={expandedProjectId === project.id}
             onToggle={() =>

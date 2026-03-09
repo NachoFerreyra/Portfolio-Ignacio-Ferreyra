@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import Collapse from "@mui/material/Collapse";
 import {
   ChevronDown,
   ChevronLeft,
@@ -58,6 +59,12 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
   const safeActiveMediaIndex =
     mediaCount > 0 ? activeMediaIndex % mediaCount : 0;
   const isPreviewVisible = isPreviewOpen && isExpanded && hasMedia;
+
+  useEffect(() => {
+    if (!isExpanded && isPreviewOpen) {
+      setIsPreviewOpen(false);
+    }
+  }, [isExpanded, isPreviewOpen]);
 
   useEffect(() => {
     if (!isPreviewVisible) {
@@ -215,7 +222,12 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
           ))}
         </div>
 
-        {isExpanded ? (
+        <Collapse
+          in={isExpanded}
+          timeout={{ enter: 320, exit: 220 }}
+          unmountOnExit
+          className={styles.detailsCollapse}
+        >
           <div className={styles.details}>
             <div className={styles.detailsLayout}>
               <div className={styles.detailsMain}>
@@ -308,7 +320,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
               ) : null}
             </div>
           </div>
-        ) : null}
+        </Collapse>
       </article>
 
       {previewModal}

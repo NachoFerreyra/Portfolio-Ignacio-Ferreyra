@@ -36,7 +36,9 @@
   display: grid;
   gap: variables.$space-s;
   align-content: start;
-  @include mixins.transition((transform, border-color, box-shadow, background-color));
+  @include mixins.transition(
+    (transform, border-color, box-shadow, background-color)
+  );
 
   h2 {
     font-size: 1rem;
@@ -57,6 +59,7 @@
 
 .tags {
   display: flex;
+  cursor: default;
   flex-wrap: wrap;
   gap: variables.$space-xs;
 
@@ -67,7 +70,9 @@
     padding: 0.22rem 0.5rem;
     font-size: variables.$font-size-xs;
     color: var(--text-secondary);
-    @include mixins.transition((background-color, border-color, color, transform));
+    @include mixins.transition(
+      (background-color, border-color, color, transform)
+    );
 
     &:hover {
       background: color-mix(in srgb, var(--accent) 20%, var(--surface-2));
