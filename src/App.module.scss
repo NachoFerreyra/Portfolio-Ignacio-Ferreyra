@@ -31,7 +31,9 @@
 .editorContent {
   flex: 1;
   min-height: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
   overscroll-behavior: contain;
   background: linear-gradient(
     180deg,

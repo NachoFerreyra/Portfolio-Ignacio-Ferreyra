@@ -88,14 +88,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: variables.$space-xs;
+  align-items: center;
 }
 
 .stack span,
 .metrics span {
+  display: inline-flex;
+  align-items: center;
   border: 1px solid var(--border-muted);
   border-radius: variables.$border-radius-xxl;
-  padding: 0.2rem 0.5rem;
+  padding: 0.18rem 0.52rem;
   font-size: variables.$font-size-xs;
+  line-height: 1.05;
+  white-space: nowrap;
   background: color-mix(in srgb, var(--surface-2) 80%, transparent);
 }
 
@@ -108,6 +113,14 @@
     color: var(--text-primary);
     transform: translateY(-1px);
   }
+}
+
+.metrics {
+  gap: 0.4rem;
+}
+
+.metrics span {
+  padding: 0.16rem 0.48rem;
 }
 
 .details {
@@ -244,27 +257,52 @@
 .previewBackdrop {
   position: fixed;
   inset: 0;
-  z-index: variables.$z-index-modal-backdrop;
+  z-index: variables.$z-index-topmost;
   background: color-mix(in srgb, var(--editor-background) 40%, rgba(0, 0, 0, 0.6));
   display: grid;
   place-items: center;
-  padding: clamp(0.8rem, 2vw, 1.4rem);
+  padding: clamp(0.7rem, 2vw, 1.5rem);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .previewDialog {
-  width: min(900px, 100%);
+  width: clamp(320px, 52vw, 780px);
+  max-width: 100%;
+  max-height: min(84dvh, 760px);
   border: 1px solid var(--border-muted);
   border-radius: variables.$border-radius-lg;
-  background: var(--editor-surface);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--surface-1) 92%, transparent) 0%,
+    color-mix(in srgb, var(--editor-surface) 80%, var(--surface-2)) 100%
+  );
   box-shadow: 0 20px 46px rgba(0, 0, 0, 0.45);
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   gap: variables.$space-s;
   padding: variables.$space-s;
+  overflow: hidden;
   z-index: variables.$z-index-modal;
+  animation: preview-enter variables.$transition-duration-slow ease-out;
+}
+
+.previewTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: variables.$space-s;
+}
+
+.previewCounter {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: variables.$font-size-xs;
+  font-family: variables.$font-family-monospace;
+  letter-spacing: 0.01em;
 }
 
 .previewClose {
-  justify-self: end;
   border: 1px solid var(--border-muted);
   border-radius: variables.$border-radius-sm;
   background: var(--surface-2);
@@ -287,17 +325,27 @@
   border: 1px solid var(--border-muted);
   border-radius: variables.$border-radius-md;
   overflow: hidden;
-  min-height: 220px;
-  max-height: 72vh;
+  width: min(100%, 640px);
+  justify-self: center;
+  height: clamp(220px, 55dvh, 560px);
   position: relative;
-  background: color-mix(in srgb, var(--surface-2) 72%, transparent);
+  display: grid;
+  place-items: center;
+  padding: clamp(0.35rem, 1vw, 0.75rem);
+  background: radial-gradient(
+    circle at 50% 10%,
+    color-mix(in srgb, var(--accent) 10%, var(--surface-2)) 0%,
+    color-mix(in srgb, var(--surface-2) 84%, transparent) 62%
+  );
 
   img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
     display: block;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    max-height: 72vh;
+    border-radius: calc(variables.$border-radius-md - 0.1rem);
   }
 }
 
@@ -314,9 +362,14 @@
   justify-content: center;
   background: color-mix(in srgb, var(--editor-background) 50%, rgba(0, 0, 0, 0.45));
   color: var(--text-primary);
+  z-index: variables.$z-index-base;
+  @include mixins.transition((color, border-color, background-color, transform));
 
   &:hover {
+    border-color: color-mix(in srgb, var(--accent) 70%, var(--border-muted));
+    background: color-mix(in srgb, var(--editor-background) 42%, rgba(0, 0, 0, 0.52));
     color: var(--accent);
+    transform: translateY(-50%) scale(1.04);
   }
 }
 
@@ -326,6 +379,84 @@
 
 .previewNext {
   right: variables.$space-xs;
+}
+
+@include mixins.media-down(variables.$breakpoint-md) {
+  .previewBackdrop {
+    padding: clamp(0.5rem, 2.4vw, 0.75rem);
+  }
+
+  .previewDialog {
+    width: 100%;
+    max-height: min(90dvh, 700px);
+    border-radius: variables.$border-radius-md;
+    padding: variables.$space-xs;
+    gap: variables.$space-xs;
+  }
+
+  .previewCounter {
+    font-size: 0.7rem;
+  }
+
+  .previewImageWrap {
+    width: 100%;
+    height: min(58dvh, 440px);
+    min-height: 200px;
+    padding: variables.$space-xs;
+  }
+
+  .previewNav {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  .previewPrev {
+    left: 0.35rem;
+  }
+
+  .previewNext {
+    right: 0.35rem;
+  }
+}
+
+@include mixins.media-down(variables.$breakpoint-sm) {
+  .previewBackdrop {
+    padding: 0.45rem;
+  }
+
+  .previewDialog {
+    max-height: 92dvh;
+  }
+
+  .previewImageWrap {
+    height: min(52dvh, 350px);
+    min-height: 180px;
+  }
+
+  .previewClose {
+    padding: 0.28rem 0.45rem;
+  }
+
+  .mediaDots {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .previewDialog {
+    animation: none;
+  }
+}
+
+@keyframes preview-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .footer {

@@ -59,7 +59,13 @@ export const projects = [
       "Shopping cart con cupones, sugerencias de combo y logica de promociones.",
       "Autenticacion y perfil de usuario con historial de turnos.",
     ],
-    media: [],
+    media: [
+      "/esteticacgweb/ecgweb1.png",
+      "/esteticacgweb/ecgweb2.png",
+      "/esteticacgweb/ecgweb3.png",
+      "/esteticacgweb/ecgweb4.png",
+      "/esteticacgweb/ecgweb5.png",
+    ],
     links: {},
     architecture: {
       codeFiles: 226,
@@ -93,7 +99,14 @@ export const projects = [
       "Settings anidados para negocio, integraciones, templates y horarios.",
     ],
 
-    media: [],
+    media: [
+      "/esteticacgadmin/ecgadmin1.png",
+      "/esteticacgadmin/ecgadmin2.png",
+      "/esteticacgadmin/ecgadmin3.png",
+      "/esteticacgadmin/ecgadmin4.png",
+      "/esteticacgadmin/ecgadmin5.png",
+      "/esteticacgadmin/ecgadmin6.png",
+    ],
     links: {},
     architecture: {
       codeFiles: 432,
@@ -123,8 +136,10 @@ export const projects = [
       "Modal de propiedad con galeria, datos clave y CTA comercial.",
       "Arquitectura limpia con pages, components y estilos compartidos.",
     ],
-    media: [],
-    links: {},
+    media: ["/mys/mys1.png", "/mys/mys2.png", "/mys/mys3.png"],
+    links: {
+      live: "https://mysbienesraices.pages.dev/",
+    },
     architecture: {
       codeFiles: 31,
       scssFiles: 20,

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   ChevronDown,
   ChevronLeft,
@@ -113,131 +114,25 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
     setActiveMediaIndex((current) => (current + 1) % mediaCount);
   };
 
-  return (
-    <article className={styles.card}>
-      <div className={styles.cardHeader}>
-        <h2>
-          <FolderGit2 size={18} />
-          {project.name}
-        </h2>
-        <button type="button" onClick={onToggle}>
-          {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-          {isExpanded ? "Ocultar detalle" : "Ver detalle"}
-        </button>
-      </div>
-
-      <div className={styles.stack}>
-        {project.stack.map((tech) => (
-          <span key={tech}>{tech}</span>
-        ))}
-      </div>
-
-      {isExpanded ? (
-        <div className={styles.details}>
-          <div className={styles.detailsLayout}>
-            <div className={styles.detailsMain}>
-              <h3>Puntos destacados</h3>
-              <ul>
-                {project.highlights.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-
-              <h3>Escala del proyecto</h3>
-              <div className={styles.metrics}>
-                <span>
-                  {toApprox(project.architecture.codeFiles)} archivos de codigo
-                </span>
-                <span>
-                  {toApprox(project.architecture.scssFiles)} archivos SCSS
-                </span>
-                <span>
-                  {toApprox(project.architecture.components)} componentes
-                </span>
-                <span>{toApprox(project.architecture.pages)} pages</span>
-                {typeof project.architecture.group === "number" ? (
-                  <span>
-                    {project.architecture.group} {" "}
-                    {project.architecture.group === 1
-                      ? "integrante"
-                      : "integrantes"}
-                  </span>
-                ) : null}
-              </div>
-            </div>
-
-            {hasMedia || hasLinks ? (
-              <aside className={styles.sidePanel}>
-                {hasMedia ? (
-                  <section className={styles.mediaSection}>
-                    <h3>Multimedia</h3>
-
-                    <button
-                      type="button"
-                      className={styles.mediaPreview}
-                      onClick={() => setIsPreviewOpen(true)}
-                      aria-label={`Abrir vista previa de ${project.name}`}
-                    >
-                      <img
-                        src={mediaItems[safeActiveMediaIndex].src}
-                        alt={mediaItems[safeActiveMediaIndex].alt}
-                        loading="lazy"
-                      />
-                    </button>
-
-                    {mediaCount > 1 ? (
-                      <div className={styles.mediaDots}>
-                        {mediaItems.map((media, index) => (
-                          <button
-                            key={media.src}
-                            type="button"
-                            className={
-                              index === safeActiveMediaIndex
-                                ? `${styles.dot} ${styles.dotActive}`
-                                : styles.dot
-                            }
-                            aria-label={`Ver imagen ${index + 1}`}
-                            onClick={() => handleMediaSelect(index)}
-                          />
-                        ))}
-                      </div>
-                    ) : null}
-                  </section>
-                ) : null}
-
-                {hasLinks ? (
-                  <div className={styles.projectLinks}>
-                    {project.links?.live ? (
-                      <a href={project.links.live} target="_blank" rel="noreferrer">
-                        <ExternalLink size={14} />
-                        Ver sitio
-                      </a>
-                    ) : null}
-                    {project.links?.repo ? (
-                      <a href={project.links.repo} target="_blank" rel="noreferrer">
-                        <Github size={14} />
-                        Repositorio
-                      </a>
-                    ) : null}
-                  </div>
-                ) : null}
-              </aside>
-            ) : null}
-          </div>
-
-          {isPreviewVisible ? (
+  const previewModal =
+    isPreviewVisible && typeof document !== "undefined"
+      ? createPortal(
+          <div
+            className={styles.previewBackdrop}
+            role="presentation"
+            onClick={() => setIsPreviewOpen(false)}
+          >
             <div
-              className={styles.previewBackdrop}
-              role="presentation"
-              onClick={() => setIsPreviewOpen(false)}
+              className={styles.previewDialog}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Vista previa de ${project.name}`}
+              onClick={(event) => event.stopPropagation()}
             >
-              <div
-                className={styles.previewDialog}
-                role="dialog"
-                aria-modal="true"
-                aria-label={`Vista previa de ${project.name}`}
-                onClick={(event) => event.stopPropagation()}
-              >
+              <header className={styles.previewTopBar}>
+                <p className={styles.previewCounter}>
+                  Imagen {safeActiveMediaIndex + 1} de {mediaCount}
+                </p>
                 <button
                   type="button"
                   className={styles.previewClose}
@@ -246,59 +141,178 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                   <X size={16} />
                   Cerrar
                 </button>
+              </header>
 
-                <div className={styles.previewImageWrap}>
-                  {mediaCount > 1 ? (
-                    <button
-                      type="button"
-                      className={`${styles.previewNav} ${styles.previewPrev}`}
-                      onClick={handleMediaPrev}
-                      aria-label="Imagen anterior"
-                    >
-                      <ChevronLeft size={16} />
-                    </button>
-                  ) : null}
+              <div className={styles.previewImageWrap}>
+                {mediaCount > 1 ? (
+                  <button
+                    type="button"
+                    className={`${styles.previewNav} ${styles.previewPrev}`}
+                    onClick={handleMediaPrev}
+                    aria-label="Imagen anterior"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                ) : null}
 
-                  <img
-                    src={mediaItems[safeActiveMediaIndex].src}
-                    alt={mediaItems[safeActiveMediaIndex].alt}
-                  />
-
-                  {mediaCount > 1 ? (
-                    <button
-                      type="button"
-                      className={`${styles.previewNav} ${styles.previewNext}`}
-                      onClick={handleMediaNext}
-                      aria-label="Imagen siguiente"
-                    >
-                      <ChevronRight size={16} />
-                    </button>
-                  ) : null}
-                </div>
+                <img
+                  src={mediaItems[safeActiveMediaIndex].src}
+                  alt={mediaItems[safeActiveMediaIndex].alt}
+                />
 
                 {mediaCount > 1 ? (
-                  <div className={styles.mediaDots}>
-                    {mediaItems.map((media, index) => (
-                      <button
-                        key={`${media.src}-preview`}
-                        type="button"
-                        className={
-                          index === safeActiveMediaIndex
-                            ? `${styles.dot} ${styles.dotActive}`
-                            : styles.dot
-                        }
-                        aria-label={`Ver imagen ${index + 1}`}
-                        onClick={() => handleMediaSelect(index)}
-                      />
-                    ))}
-                  </div>
+                  <button
+                    type="button"
+                    className={`${styles.previewNav} ${styles.previewNext}`}
+                    onClick={handleMediaNext}
+                    aria-label="Imagen siguiente"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
                 ) : null}
               </div>
+
+              {mediaCount > 1 ? (
+                <div className={styles.mediaDots}>
+                  {mediaItems.map((media, index) => (
+                    <button
+                      key={`${media.src}-preview`}
+                      type="button"
+                      className={
+                        index === safeActiveMediaIndex
+                          ? `${styles.dot} ${styles.dotActive}`
+                          : styles.dot
+                      }
+                      aria-label={`Ver imagen ${index + 1}`}
+                      onClick={() => handleMediaSelect(index)}
+                    />
+                  ))}
+                </div>
+              ) : null}
             </div>
-          ) : null}
+          </div>,
+          document.body,
+        )
+      : null;
+
+  return (
+    <>
+      <article className={styles.card}>
+        <div className={styles.cardHeader}>
+          <h2>
+            <FolderGit2 size={18} />
+            {project.name}
+          </h2>
+          <button type="button" onClick={onToggle}>
+            {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            {isExpanded ? "Ocultar detalle" : "Ver detalle"}
+          </button>
         </div>
-      ) : null}
-    </article>
+
+        <div className={styles.stack}>
+          {project.stack.map((tech) => (
+            <span key={tech}>{tech}</span>
+          ))}
+        </div>
+
+        {isExpanded ? (
+          <div className={styles.details}>
+            <div className={styles.detailsLayout}>
+              <div className={styles.detailsMain}>
+                <h3>Puntos destacados</h3>
+                <ul>
+                  {project.highlights.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+
+                <h3>Escala del proyecto</h3>
+                <div className={styles.metrics}>
+                  <span>
+                    {toApprox(project.architecture.codeFiles)} archivos de codigo
+                  </span>
+                  <span>
+                    {toApprox(project.architecture.scssFiles)} archivos SCSS
+                  </span>
+                  <span>
+                    {toApprox(project.architecture.components)} componentes
+                  </span>
+                  <span>{toApprox(project.architecture.pages)} pages</span>
+                  {typeof project.architecture.group === "number" ? (
+                    <span>
+                      {project.architecture.group} {" "}
+                      {project.architecture.group === 1
+                        ? "integrante"
+                        : "integrantes"}
+                    </span>
+                  ) : null}
+                </div>
+              </div>
+
+              {hasMedia || hasLinks ? (
+                <aside className={styles.sidePanel}>
+                  {hasMedia ? (
+                    <section className={styles.mediaSection}>
+                      <h3>Multimedia</h3>
+
+                      <button
+                        type="button"
+                        className={styles.mediaPreview}
+                        onClick={() => setIsPreviewOpen(true)}
+                        aria-label={`Abrir vista previa de ${project.name}`}
+                      >
+                        <img
+                          src={mediaItems[safeActiveMediaIndex].src}
+                          alt={mediaItems[safeActiveMediaIndex].alt}
+                          loading="lazy"
+                        />
+                      </button>
+
+                      {mediaCount > 1 ? (
+                        <div className={styles.mediaDots}>
+                          {mediaItems.map((media, index) => (
+                            <button
+                              key={media.src}
+                              type="button"
+                              className={
+                                index === safeActiveMediaIndex
+                                  ? `${styles.dot} ${styles.dotActive}`
+                                  : styles.dot
+                              }
+                              aria-label={`Ver imagen ${index + 1}`}
+                              onClick={() => handleMediaSelect(index)}
+                            />
+                          ))}
+                        </div>
+                      ) : null}
+                    </section>
+                  ) : null}
+
+                  {hasLinks ? (
+                    <div className={styles.projectLinks}>
+                      {project.links?.live ? (
+                        <a href={project.links.live} target="_blank" rel="noreferrer">
+                          <ExternalLink size={14} />
+                          Ver sitio
+                        </a>
+                      ) : null}
+                      {project.links?.repo ? (
+                        <a href={project.links.repo} target="_blank" rel="noreferrer">
+                          <Github size={14} />
+                          Repositorio
+                        </a>
+                      ) : null}
+                    </div>
+                  ) : null}
+                </aside>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
+      </article>
+
+      {previewModal}
+    </>
   );
 };
 
