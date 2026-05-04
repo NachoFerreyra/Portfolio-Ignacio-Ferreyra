@@ -1,13 +1,30 @@
 export const skills = {
   languages: ["JavaScript", "Java", "Python", "C"],
 
-  methodologies: ["Metodologias Agiles (Scrum)"],
+  methodologies: ["Metodologias Agiles (Scrum)", "Kanban"],
 
-  frontendCv: ["React", "Vite", "HTML5", "CSS3", "Sass (BEM)", "Material UI"],
+  frontendCv: [
+    "React",
+    "Vite",
+    "React Router",
+    "Redux Toolkit",
+    "HTML5",
+    "CSS3",
+    "Sass (BEM/CSS Modules)",
+    "Material UI",
+    "Framer Motion",
+  ],
 
-  databases: ["MySQL", "MongoDB"],
+  databases: ["MySQL", "MongoDB", "Supabase (PostgreSQL)"],
 
-  toolsCv: ["Git", "GitHub", "Postman"],
+  toolsCv: [
+    "Git",
+    "GitHub",
+    "Postman",
+    "GitBook (nivel inicial)",
+    "Jira (nivel inicial)",
+    "Cloudflare Wrangler",
+  ],
 
   frontend: [
     "React",
@@ -24,5 +41,13 @@ export const skills = {
     "UML (Casos de Uso, Clases, Secuencia, Flujo)",
     "Modelado de Base de Datos (ER, Relacional)",
     "Figma",
+    "Documentacion funcional y tecnica",
+  ],
+
+  testing: [
+    "Jest",
+    "Testing Library (React)",
+    "Cypress (E2E)",
+    "Pruebas funcionales/manuales",
   ],
 };

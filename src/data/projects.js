@@ -49,6 +49,9 @@ export const projects = [
       "Sonner",
       "BEM",
       "Figma",
+      "Jest + Testing Library",
+      "Cypress",
+      "Cloudflare Wrangler",
     ],
     highlights: [
       "Analisis y relevamiento de requerimientos funcionales para definir la logica de negocio.",
@@ -58,6 +61,8 @@ export const projects = [
       "Flujo de seleccion de servicios por categoria, jornada y tratamiento.",
       "Shopping cart con cupones, sugerencias de combo y logica de promociones.",
       "Autenticacion y perfil de usuario con historial de turnos.",
+      "Testing automatizado con Jest/Testing Library y cobertura E2E con Cypress.",
+      "Pipeline de build/deploy con entornos staging/produccion en Cloudflare Wrangler.",
     ],
     media: [
       "/esteticacgweb/ecgweb1.png",
@@ -128,13 +133,17 @@ export const projects = [
       "React Router",
       "Sass Modules",
       "rc-slider",
-      "JSON data layer",
+      "Supabase",
+      "Supabase Auth",
+      "Supabase Storage",
     ],
     highlights: [
       "Catalogo por categorias: casas, apartamentos, bodegas y fincas.",
       "Filtro compuesto con sliders y orden por precio/area.",
       "Modal de propiedad con galeria, datos clave y CTA comercial.",
-      "Arquitectura limpia con pages, components y estilos compartidos.",
+      "Panel admin protegido con autenticacion y rutas privadas.",
+      "CRUD de categorias y propiedades conectado a Supabase.",
+      "Subida y gestion de imagenes en Supabase Storage.",
     ],
     media: ["/mys/mys1.png", "/mys/mys2.png", "/mys/mys3.png"],
     links: {

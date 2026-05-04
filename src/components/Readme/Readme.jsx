@@ -1,7 +1,10 @@
 import { profile } from "@/data/profile";
+import { useOutletContext } from "react-router-dom";
 import styles from "./Readme.module.scss";
 
 const Readme = () => {
+  const { openFile } = useOutletContext();
+
   return (
     <section className={styles.readme}>
       <h1># Bienvenido a mi portfolio!</h1>
@@ -40,6 +43,24 @@ const Readme = () => {
             </a>
           </li>
         </ul>
+      </article>
+
+      <article className={styles.card}>
+        <h2>Accesos rapidos</h2>
+        <div className={styles.quickActions}>
+          <button type="button" onClick={() => openFile("proyectos")}>
+            Proyectos
+          </button>
+          <button type="button" onClick={() => openFile("habilidades")}>
+            Habilidades
+          </button>
+          <button type="button" onClick={() => openFile("contacto")}>
+            Contacto
+          </button>
+          <button type="button" onClick={() => openFile("sobre-mi")}>
+            Sobre mi
+          </button>
+        </div>
       </article>
     </section>
   );

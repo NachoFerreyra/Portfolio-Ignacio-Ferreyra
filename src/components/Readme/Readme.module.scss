@@ -52,3 +52,25 @@
   padding-left: variables.$space-m;
   color: var(--text-primary);
 }
+
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$space-s;
+
+  button {
+    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    padding: 0.45rem 0.75rem;
+    border-radius: 6px;
+    font-size: variables.$font-size-sm;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  }
+}

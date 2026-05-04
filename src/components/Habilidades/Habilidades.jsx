@@ -8,6 +8,7 @@ const Habilidades = () => {
     { title: "Metodologias", items: skills.methodologies },
     { title: "Frontend", items: skills.frontendCv || skills.frontend },
     { title: "Bases de datos", items: skills.databases },
+    { title: "Testing", items: skills.testing },
     { title: "Herramientas", items: skills.toolsCv },
     { title: "Analisis y diseño", items: skills.analysisAndDesign },
   ].filter((group) => Array.isArray(group.items) && group.items.length);

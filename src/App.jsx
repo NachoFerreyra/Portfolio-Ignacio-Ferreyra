@@ -61,8 +61,15 @@ const App = () => {
     }
   };
 
-  const isActiveFileOpen = activeFile ? openTabs.includes(activeFile.id) : false;
-  const hasOpenTabs = openTabs.length > 0;
+  const effectiveOpenTabs =
+    activeFile && !openTabs.includes(activeFile.id)
+      ? [...openTabs, activeFile.id]
+      : openTabs;
+
+  const isActiveFileOpen = activeFile
+    ? effectiveOpenTabs.includes(activeFile.id)
+    : false;
+  const hasOpenTabs = effectiveOpenTabs.length > 0;
 
   return (
     <div className={`u-app-shell ${styles.shell}`}>
@@ -85,7 +92,7 @@ const App = () => {
         <section className={styles.editor}>
           <TabsBar
             files={explorerFiles}
-            openTabs={openTabs}
+            openTabs={effectiveOpenTabs}
             activeFileId={activeFile?.id}
             onSelectTab={handleSelectTab}
             onCloseTab={handleCloseTab}
@@ -93,7 +100,7 @@ const App = () => {
 
           <div className={styles.editorContent}>
             {hasOpenTabs && isActiveFileOpen ? (
-              <Outlet />
+              <Outlet context={{ openFile: handleOpenFile }} />
             ) : (
               <div className={styles.emptyState}>
                 <p>Selecciona alguna opcion del explorador para empezar.</p>
@@ -103,7 +110,7 @@ const App = () => {
 
           <StatusBar
             activeFile={isActiveFileOpen ? activeFile : null}
-            tabsCount={openTabs.length}
+            tabsCount={effectiveOpenTabs.length}
           />
         </section>
       </main>
