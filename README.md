@@ -11,18 +11,21 @@ Portfolio interactivo inspirado en la interfaz de Visual Studio Code.
 
 ## Proyectos incluidos
 
-- Portfolio Ignacio Ferreyra
-- Estetica CG - Web
-- Estetica CG - Admin
-- MSBienesRaices
+- Portfolio Ignacio Ferreyra: portfolio interactivo con UI inspirada en VS Code, rutas, tema claro/oscuro y data files editables.
+- Estetica CG - Web: sitio comercial responsive con SEO por ruta, sitemap, PWA, formularios y deploy en Cloudflare.
+- Estetica CG - Admin: backoffice operativo para agenda, clientes, profesionales, catalogo, ventas, promociones, recordatorios y settings.
+- M&S Negocios e Inversiones: sitio inmobiliario con catalogo, filtros, modal de propiedad, admin protegido y Supabase.
 
 ## Stack
 
-- React
+- React 18/19
 - Vite
 - React Router
 - SCSS + CSS Modules
+- MUI
 - Lucide React
+- Supabase
+- Cloudflare Wrangler
 
 ## Scripts
 

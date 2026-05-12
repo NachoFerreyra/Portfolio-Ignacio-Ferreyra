@@ -21,8 +21,8 @@ export const skills = {
     "Git",
     "GitHub",
     "Postman",
-    "GitBook (nivel inicial)",
-    "Jira (nivel inicial)",
+    "GitBook",
+    "Jira",
     "Cloudflare Wrangler",
   ],
 

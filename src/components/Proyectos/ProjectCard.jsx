@@ -62,7 +62,8 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
 
   useEffect(() => {
     if (!isExpanded && isPreviewOpen) {
-      setIsPreviewOpen(false);
+      const timeoutId = window.setTimeout(() => setIsPreviewOpen(false), 0);
+      return () => window.clearTimeout(timeoutId);
     }
   }, [isExpanded, isPreviewOpen]);
 
