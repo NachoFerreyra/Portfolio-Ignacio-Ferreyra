@@ -174,6 +174,7 @@ export const projects = [
       "/mys/mys6.png",
       "/mys/mys7.png",
       "/mys/mys8.png",
+      "/mys/mys9.png",
     ],
     links: {
       live: "https://www.mysnegocioseinversiones.com/",
