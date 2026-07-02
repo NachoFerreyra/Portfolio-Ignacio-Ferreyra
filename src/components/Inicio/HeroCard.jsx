@@ -34,7 +34,7 @@ const HeroCard = ({ profile }) => {
           </span>
           <span>
             {"  "}
-            <strong>especialidad</strong>: "Frontend + Analisis funcional",
+            <strong>especialidad</strong>: "Frontend · Backend · Analisis de Sistemas",
           </span>
           <span>
             {"  "}

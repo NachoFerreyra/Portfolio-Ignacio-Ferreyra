@@ -12,7 +12,7 @@ export const profile = {
     position: "50% 35%",
   },
   professionalSummary:
-    "Analista Programador Universitario de Sistemas recientemente graduado, con formacion tecnica en desarrollo de aplicaciones y gestion de informacion. Mi experiencia principal se centra en analisis de requerimientos y desarrollo web en proyectos colaborativos, con foco en responsabilidad, adaptacion y aprendizaje continuo.",
+    "Analista Programador Universitario de Sistemas recientemente graduado, con formacion tecnica en desarrollo de aplicaciones y gestion de informacion. Mi experiencia abarca desarrollo web frontend con React y Vite, desarrollo backend con NestJS y REST APIs, y analisis de requerimientos en proyectos colaborativos, con foco en responsabilidad, adaptacion y aprendizaje continuo.",
   languages: [
     { name: "Español", level: "Nativo" },
     { name: "Ingles", level: "Intermedio (B1)" },
@@ -39,6 +39,8 @@ export const profile = {
       "Desarrollo de aplicaciones web con React + Vite",
       "Implementacion de enrutado complejo y componentes reutilizables",
       "Trabajo con estilos modulares y estructuras mantenibles",
+      "Desarrollo de REST APIs con NestJS, TypeScript y MongoDB Atlas",
+      "Implementacion de autenticacion JWT, RBAC y documentacion con Swagger",
     ],
     interests: [
       "Arquitectura de software",

@@ -7,6 +7,7 @@ const Habilidades = () => {
     { title: "Lenguajes", items: skills.languages },
     { title: "Metodologias", items: skills.methodologies },
     { title: "Frontend", items: skills.frontendCv || skills.frontend },
+    { title: "Backend", items: skills.backend },
     { title: "Bases de datos", items: skills.databases },
     { title: "Testing", items: skills.testing },
     { title: "Herramientas", items: skills.toolsCv },

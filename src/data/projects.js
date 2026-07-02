@@ -142,6 +142,43 @@ export const projects = [
     },
   },
   {
+    id: "tech-store-api",
+    name: "Tech Store API",
+    type: "REST API backend con NestJS",
+    summary:
+      "API RESTful para una tienda de tecnologia construida con NestJS 11, MongoDB Atlas y autenticacion JWT. Implementa arquitectura modular, RBAC, validacion de DTOs y documentacion interactiva con Swagger.",
+    stack: [
+      "NestJS 11",
+      "TypeScript 5",
+      "MongoDB Atlas",
+      "Mongoose",
+      "Passport + JWT",
+      "bcrypt",
+      "class-validator",
+      "Swagger / OpenAPI",
+    ],
+    highlights: [
+      "Arquitectura modular NestJS con modulos independientes: Auth, Products y Users.",
+      "Autenticacion con JWT y autorizacion por roles (RBAC) mediante guards y decoradores personalizados.",
+      "CRUD completo de productos con validacion de DTOs, whitelist y manejo de errores HTTP.",
+      "Hashing seguro de contrasenas con bcrypt y exclusion del campo password por defecto en esquemas Mongoose.",
+      "Documentacion interactiva generada con Swagger (OpenAPI), con soporte de Authorize para endpoints protegidos.",
+      "Deploy funcional en Render con variables de entorno y MongoDB Atlas listo para produccion.",
+    ],
+    media: [],
+    links: {
+      repo: "https://github.com/NachoFerreyra/tech-store-api",
+      live: "https://tech-store-api-hja3.onrender.com/api",
+    },
+    architecture: {
+      codeFiles: 20,
+      scssFiles: 0,
+      components: 4,
+      pages: 3,
+      group: 1,
+    },
+  },
+  {
     id: "ms-bienes-raices",
     name: "M&S Negocios e Inversiones",
     type: "Sitio inmobiliario",

@@ -1,5 +1,5 @@
 export const skills = {
-  languages: ["JavaScript", "Java", "Python", "C"],
+  languages: ["JavaScript", "TypeScript", "Java", "Python", "C"],
 
   methodologies: ["Metodologias Agiles (Scrum)", "Kanban"],
 
@@ -15,12 +15,24 @@ export const skills = {
     "Framer Motion",
   ],
 
-  databases: ["MySQL", "MongoDB", "Supabase (PostgreSQL)"],
+  databases: ["MySQL", "MongoDB Atlas", "Mongoose (ODM)", "Supabase (PostgreSQL)"],
+
+  backend: [
+    "NestJS 11",
+    "TypeScript",
+    "REST API",
+    "JWT (Passport)",
+    "bcrypt",
+    "Swagger / OpenAPI",
+    "class-validator",
+  ],
 
   toolsCv: [
     "Git",
     "GitHub",
     "Postman",
+    "Swagger UI",
+    "Render (Deploy)",
     "GitBook",
     "Jira",
     "Cloudflare Wrangler",
