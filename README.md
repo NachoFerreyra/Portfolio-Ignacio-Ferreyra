@@ -16,6 +16,8 @@ Interactive portfolio inspired by the Visual Studio Code interface.
 - **Estética CG — Website:** responsive commercial website with route-level SEO, sitemap, PWA, forms, and Cloudflare deployment.
 - **Estética CG — Admin:** operational back office for appointments, clients, professionals, catalog, sales, promotions, reminders, and settings.
 - **M&S Negocios e Inversiones:** real estate platform with property catalog, filters, property modal, protected admin dashboard, and Supabase.
+- **TaskDesk:** full-stack agile task management platform with Kanban, backlog, issue flows, analytics, Express, and SQLite.
+- **Nails EsenciaGM:** responsive digital business card with booking channels, map, social links, a filterable service gallery, and an accessible lightbox.
 - **Tech Store API:** NestJS REST API with JWT authentication, RBAC, MongoDB Atlas, and Swagger/OpenAPI documentation.
 
 ## Stack

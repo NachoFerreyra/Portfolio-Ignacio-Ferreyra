@@ -20,8 +20,7 @@ const toApprox = (value) => {
   if (value >= 200) return "+200";
   if (value >= 100) return "+100";
   if (value >= 50) return "+50";
-  if (value >= 20) return "+20";
-  return `+${value}`;
+  return String(value);
 };
 
 const normalizeMediaItem = (item, projectName, index, previewLabel) => {
@@ -29,6 +28,7 @@ const normalizeMediaItem = (item, projectName, index, previewLabel) => {
     return {
       src: item,
       alt: `${projectName} - ${previewLabel} ${index + 1}`,
+      caption: null,
     };
   }
 
@@ -39,6 +39,7 @@ const normalizeMediaItem = (item, projectName, index, previewLabel) => {
   return {
     src: item.src,
     alt: item.alt || `${projectName} - ${previewLabel} ${index + 1}`,
+    caption: item.caption || null,
   };
 };
 
@@ -61,6 +62,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
   const mediaCount = mediaItems.length;
   const hasMedia = mediaCount > 0;
   const hasLinks = Boolean(project.links?.live || project.links?.repo);
+  const detailsId = `project-details-${project.id}`;
   const safeActiveMediaIndex =
     mediaCount > 0 ? activeMediaIndex % mediaCount : 0;
   const isPreviewVisible = isPreviewOpen && isExpanded && hasMedia;
@@ -186,6 +188,12 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                 ) : null}
               </div>
 
+              {mediaItems[safeActiveMediaIndex].caption ? (
+                <p className={styles.mediaCaption}>
+                  {mediaItems[safeActiveMediaIndex].caption}
+                </p>
+              ) : null}
+
               {mediaCount > 1 ? (
                 <div className={styles.mediaDots}>
                   {mediaItems.map((media, index) => (
@@ -217,11 +225,21 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
             <FolderGit2 size={18} />
             {project.name}
           </h2>
-          <button type="button" onClick={onToggle}>
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={isExpanded}
+            aria-controls={detailsId}
+          >
             {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             {isExpanded ? projectText.hideDetails : projectText.showDetails}
           </button>
         </div>
+
+        {project.type ? <p className={styles.projectType}>{project.type}</p> : null}
+        {project.summary ? (
+          <p className={styles.projectSummary}>{project.summary}</p>
+        ) : null}
 
         <div className={styles.stack}>
           {project.stack.map((tech) => (
@@ -235,7 +253,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
           unmountOnExit
           className={styles.detailsCollapse}
         >
-          <div className={styles.details}>
+          <div id={detailsId} className={styles.details}>
             <div className={styles.detailsLayout}>
               <div className={styles.detailsMain}>
                 <h3>{projectText.highlights}</h3>
@@ -247,18 +265,26 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
 
                 <h3>{projectText.projectScale}</h3>
                 <div className={styles.metrics}>
-                  <span>
-                    {toApprox(project.architecture.codeFiles)} {projectText.codeFiles}
-                  </span>
-                  <span>
-                    {toApprox(project.architecture.scssFiles)} {projectText.scssFiles}
-                  </span>
-                  <span>
-                    {toApprox(project.architecture.components)} {projectText.components}
-                  </span>
-                  <span>
-                    {toApprox(project.architecture.pages)} {projectText.pages}
-                  </span>
+                  {project.architecture.codeFiles > 0 ? (
+                    <span>
+                      {toApprox(project.architecture.codeFiles)} {projectText.codeFiles}
+                    </span>
+                  ) : null}
+                  {project.architecture.scssFiles > 0 ? (
+                    <span>
+                      {toApprox(project.architecture.scssFiles)} {projectText.scssFiles}
+                    </span>
+                  ) : null}
+                  {project.architecture.components > 0 ? (
+                    <span>
+                      {toApprox(project.architecture.components)} {projectText.components}
+                    </span>
+                  ) : null}
+                  {project.architecture.pages > 0 ? (
+                    <span>
+                      {toApprox(project.architecture.pages)} {projectText.pages}
+                    </span>
+                  ) : null}
                   {typeof project.architecture.group === "number" ? (
                     <span>
                       {project.architecture.group} {" "}
@@ -286,6 +312,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                           src={mediaItems[safeActiveMediaIndex].src}
                           alt={mediaItems[safeActiveMediaIndex].alt}
                           loading="lazy"
+                          decoding="async"
                         />
                       </button>
 
@@ -306,19 +333,35 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                           ))}
                         </div>
                       ) : null}
+
+                      {mediaItems[safeActiveMediaIndex].caption ? (
+                        <p className={styles.mediaCaption}>
+                          {mediaItems[safeActiveMediaIndex].caption}
+                        </p>
+                      ) : null}
                     </section>
                   ) : null}
 
                   {hasLinks ? (
                     <div className={styles.projectLinks}>
                       {project.links?.live ? (
-                        <a href={project.links.live} target="_blank" rel="noreferrer">
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${projectText.viewSite}: ${project.name}`}
+                        >
                           <ExternalLink size={14} />
                           {projectText.viewSite}
                         </a>
                       ) : null}
                       {project.links?.repo ? (
-                        <a href={project.links.repo} target="_blank" rel="noreferrer">
+                        <a
+                          href={project.links.repo}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${projectText.repository}: ${project.name}`}
+                        >
                           <Github size={14} />
                           {projectText.repository}
                         </a>

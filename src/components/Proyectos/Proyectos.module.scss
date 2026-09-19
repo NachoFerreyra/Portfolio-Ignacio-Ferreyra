@@ -85,6 +85,21 @@
   }
 }
 
+.projectType {
+  margin: 0;
+  color: var(--syntax-string);
+  font-family: variables.$font-family-monospace;
+  font-size: variables.$font-size-xs;
+}
+
+.projectSummary {
+  margin: 0;
+  max-width: 78ch;
+  color: var(--text-secondary);
+  font-size: variables.$font-size-sm;
+  line-height: 1.55;
+}
+
 .stack,
 .metrics {
   display: flex;
@@ -213,6 +228,13 @@
   align-items: center;
   justify-content: center;
   gap: variables.$space-xs;
+}
+
+.mediaCaption {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: variables.$font-size-xs;
+  line-height: 1.4;
 }
 
 .dot {
@@ -444,6 +466,11 @@
 }
 
 @include mixins.media-down(variables.$breakpoint-sm) {
+  .cardHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .previewBackdrop {
     padding: 0.45rem;
   }
