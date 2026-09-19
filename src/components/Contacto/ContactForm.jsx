@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Contacto.module.scss";
 
 const ContactForm = ({ email, status, setStatus }) => {
+  const { text } = useLanguage();
   const [form, setForm] = useState({
     name: "",
     from: "",
@@ -17,9 +19,9 @@ const ContactForm = ({ email, status, setStatus }) => {
       return;
     }
 
-    const subject = encodeURIComponent(`Contacto portfolio de ${form.name}`);
+    const subject = encodeURIComponent(`${text.contact.subject} ${form.name}`);
     const body = encodeURIComponent(
-      `Nombre: ${form.name}\nEmail: ${form.from}\n\n${form.message}`,
+      `${text.contact.bodyName}: ${form.name}\nEmail: ${form.from}\n\n${form.message}`,
     );
 
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
@@ -29,52 +31,48 @@ const ContactForm = ({ email, status, setStatus }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label>
-        Nombre
+        {text.contact.name}
         <input
           type="text"
           value={form.name}
           onChange={(event) => setForm({ ...form, name: event.target.value })}
-          placeholder="Tu nombre"
+          placeholder={text.contact.yourName}
         />
       </label>
 
       <label>
-        Email
+        {text.contact.email}
         <input
           type="email"
           value={form.from}
           onChange={(event) => setForm({ ...form, from: event.target.value })}
-          placeholder="tu@email.com"
+          placeholder={text.contact.yourEmail}
         />
       </label>
 
       <label>
-        Mensaje
+        {text.contact.message}
         <textarea
           rows={6}
           value={form.message}
           onChange={(event) =>
             setForm({ ...form, message: event.target.value })
           }
-          placeholder="Contame brevemente tu idea o necesidad"
+          placeholder={text.contact.messagePlaceholder}
         />
       </label>
 
       {status === "error" ? (
-        <p className={styles.error}>
-          Completa nombre, email y mensaje antes de enviar.
-        </p>
+        <p className={styles.error}>{text.contact.formError}</p>
       ) : null}
 
       {status === "success" ? (
-        <p className={styles.success}>
-          Se abrio tu cliente de correo con el mensaje cargado.
-        </p>
+        <p className={styles.success}>{text.contact.formSuccess}</p>
       ) : null}
 
       <button type="submit">
         <Send size={16} />
-        Enviar mensaje
+        {text.contact.sendMessage}
       </button>
     </form>
   );

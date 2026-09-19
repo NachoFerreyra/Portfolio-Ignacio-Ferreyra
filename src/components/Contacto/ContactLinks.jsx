@@ -1,10 +1,13 @@
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Contacto.module.scss";
 
 const ContactLinks = ({ contacts, phone }) => {
+  const { text } = useLanguage();
+
   return (
     <aside className={styles.linksCard}>
-      <h2>Canales directos</h2>
+      <h2>{text.contact.directChannels}</h2>
 
       <div className={styles.linksList}>
         <a href={`mailto:${contacts.email}`}>

@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
-  explorerFiles,
   findFileById,
   findFileByRoute,
+  getExplorerFiles,
   getRouteByFileId,
 } from "@/utils/fileMap";
 import TopBar from "@/components/Layout/TopBar/TopBar";
@@ -17,10 +18,14 @@ const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { language, text, toggleLanguage } = useLanguage();
+  const explorerFiles = useMemo(() => getExplorerFiles(language), [language]);
 
   const activeFile = useMemo(
-    () => findFileByRoute(location.pathname) || findFileById("readme"),
-    [location.pathname],
+    () =>
+      findFileByRoute(location.pathname, language) ||
+      findFileById("readme", language),
+    [location.pathname, language],
   );
 
   const [openTabs, setOpenTabs] = useState(() =>
@@ -29,7 +34,7 @@ const App = () => {
   const [isExplorerOpen, setIsExplorerOpen] = useState(false);
 
   const handleOpenFile = (fileId) => {
-    const file = findFileById(fileId);
+    const file = findFileById(fileId, language);
     if (!file) return;
 
     setOpenTabs((currentTabs) =>
@@ -76,6 +81,8 @@ const App = () => {
       <TopBar
         theme={theme}
         onToggleTheme={toggleTheme}
+        language={language}
+        onToggleLanguage={toggleLanguage}
         isExplorerOpen={isExplorerOpen}
         onToggleExplorer={() => setIsExplorerOpen((currentValue) => !currentValue)}
       />
@@ -103,7 +110,7 @@ const App = () => {
               <Outlet context={{ openFile: handleOpenFile }} />
             ) : (
               <div className={styles.emptyState}>
-                <p>Selecciona alguna opcion del explorador para empezar.</p>
+                <p>{text.app.emptyState}</p>
               </div>
             )}
           </div>

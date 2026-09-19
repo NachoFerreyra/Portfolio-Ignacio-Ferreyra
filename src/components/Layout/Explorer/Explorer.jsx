@@ -6,6 +6,7 @@ import {
   Rocket,
   UserCircle2,
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Explorer.module.scss";
 
 const iconByFileId = {
@@ -18,21 +19,23 @@ const iconByFileId = {
 };
 
 const Explorer = ({ files, activeFileId, onOpenFile, isOpen, onClose }) => {
+  const { language, text } = useLanguage();
+
   return (
     <>
       <button
         type="button"
         className={`${styles.mobileOverlay} ${isOpen ? styles.mobileOverlayVisible : ""}`}
         onClick={onClose}
-        aria-label="Cerrar explorador"
+        aria-label={text.explorer.closeExplorer}
       />
 
       <aside
         className={`${styles.explorer} ${isOpen ? styles.explorerOpen : ""}`}
       >
         <header className={styles.header}>
-          <span>ARCHIVOS</span>
-          <small>ignacio-portfolio</small>
+          <span>{text.explorer.files}</span>
+          <small>{text.explorer.workspace}</small>
         </header>
 
         <div className={styles.fileList}>
@@ -56,12 +59,16 @@ const Explorer = ({ files, activeFileId, onOpenFile, isOpen, onClose }) => {
 
         <div className={styles.bottomActions}>
           <a
-            href="/cv/Ignacio Ferreyra CV.pdf"
+            href={
+              language === "en"
+                ? "/cv/Ignacio Ferreyra Resume.pdf"
+                : "/cv/Ignacio Ferreyra CV.pdf"
+            }
             download
             className={styles.downloadCv}
             onClick={onClose}
           >
-            Descargar CV
+            {text.explorer.downloadResume}
           </a>
         </div>
       </aside>

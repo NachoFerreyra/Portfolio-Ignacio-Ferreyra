@@ -1,24 +1,26 @@
-# Portfolio Ignacio Ferreyra
+# Ignacio Ferreyra Portfolio
 
-Portfolio interactivo inspirado en la interfaz de Visual Studio Code.
+Interactive portfolio inspired by the Visual Studio Code interface.
 
-## Qué incluye
+## Highlights
 
-- Interfaz estilo VS Code (explorador, pestañas y barra de estado).
-- Secciones de inicio, sobre mí, proyectos, habilidades y contacto.
-- Proyectos reales con detalle técnico.
-- Modo claro/oscuro.
+- VS Code-inspired interface with an explorer, tabs, and a status bar.
+- English/Spanish language selector and light/dark mode.
+- Home, about, projects, skills, and contact sections.
+- Real projects with technical details, metrics, links, and multimedia previews.
+- Downloads the Spanish CV or English resume according to the selected language.
 
-## Proyectos incluidos
+## Featured projects
 
-- Portfolio Ignacio Ferreyra: portfolio interactivo con UI inspirada en VS Code, rutas, tema claro/oscuro y data files editables.
-- Estetica CG - Web: sitio comercial responsive con SEO por ruta, sitemap, PWA, formularios y deploy en Cloudflare.
-- Estetica CG - Admin: backoffice operativo para agenda, clientes, profesionales, catalogo, ventas, promociones, recordatorios y settings.
-- M&S Negocios e Inversiones: sitio inmobiliario con catalogo, filtros, modal de propiedad, admin protegido y Supabase.
+- **Ignacio Ferreyra Portfolio:** interactive portfolio with a VS Code-inspired UI, routes, light/dark mode, and data-driven content.
+- **Estética CG — Website:** responsive commercial website with route-level SEO, sitemap, PWA, forms, and Cloudflare deployment.
+- **Estética CG — Admin:** operational back office for appointments, clients, professionals, catalog, sales, promotions, reminders, and settings.
+- **M&S Negocios e Inversiones:** real estate platform with property catalog, filters, property modal, protected admin dashboard, and Supabase.
+- **Tech Store API:** NestJS REST API with JWT authentication, RBAC, MongoDB Atlas, and Swagger/OpenAPI documentation.
 
 ## Stack
 
-- React 18/19
+- React 19
 - Vite
 - React Router
 - SCSS + CSS Modules
@@ -29,24 +31,24 @@ Portfolio interactivo inspirado en la interfaz de Visual Studio Code.
 
 ## Scripts
 
-- `npm run dev` -> entorno de desarrollo
-- `npm run build` -> build de producción
-- `npm run preview` -> previsualización del build
-- `npm run lint` -> validación con ESLint
+- `npm run dev` — development environment
+- `npm run build` — production build
+- `npm run preview` — preview the production build
+- `npm run lint` — validate the source with ESLint
 
-## Cómo levantar el proyecto
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Contacto
+## Contact
 
 - Email: `ignaciooferreyraa@gmail.com`
-- GitHub: `https://github.com/NachoFerreyra`
-- LinkedIn: `https://www.linkedin.com/in/ignacio-ferreyra1`
+- GitHub: <https://github.com/NachoFerreyra>
+- LinkedIn: <https://www.linkedin.com/in/ignacio-ferreyra1>
 
-## Licencia
+## License
 
-Proyecto personal/profesional para presentación de portfolio.
+Personal and professional project for portfolio presentation.

@@ -1,7 +1,10 @@
-import { profile } from "@/data/profile";
+import { profiles } from "@/data/profile";
+import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./SobreMi.module.scss";
 
 const SobreMi = () => {
+  const { language, text } = useLanguage();
+  const profile = profiles[language];
   const educationItems = (profile.educationHistory || []).map(
     (item) => `${item.title} - ${item.institution} (${item.period})`,
   );
@@ -12,27 +15,27 @@ const SobreMi = () => {
 
   const sections = [
     {
-      title: "Perfil profesional",
+      title: text.about.professionalProfile,
       className: styles.titleCyan,
       items: [profile.professionalSummary],
     },
     {
-      title: "Formacion academica",
+      title: text.about.education,
       className: styles.titleGreen,
       items: educationItems,
     },
     {
-      title: "Experiencia y enfoque",
+      title: text.about.experience,
       className: styles.titleBlue,
       items: profile.about.experience,
     },
     {
-      title: "Idiomas",
+      title: text.about.languages,
       className: styles.titleOrange,
       items: languageItems,
     },
     {
-      title: "Intereses",
+      title: text.about.interests,
       className: styles.titlePurple,
       items: profile.about.interests,
     },
@@ -40,7 +43,7 @@ const SobreMi = () => {
 
   return (
     <section className={styles.sobreMi}>
-      <h1>Sobre mi</h1>
+      <h1>{text.about.title}</h1>
 
       <div className={styles.grid}>
         {sections.map((section) => (

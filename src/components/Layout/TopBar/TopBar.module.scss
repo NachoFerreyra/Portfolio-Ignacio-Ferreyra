@@ -78,6 +78,34 @@
   }
 }
 
+.languageButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  border: 1px solid var(--border-muted);
+  border-radius: variables.$border-radius-sm;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  padding: 0.35rem 0.5rem;
+  font-size: variables.$font-size-xs;
+  font-weight: 600;
+  line-height: 1;
+  @include mixins.transition((background-color, border-color, color));
+
+  &:hover {
+    background: var(--surface-3);
+    border-color: var(--border-strong);
+  }
+}
+
+.languageActive {
+  color: var(--text-primary);
+}
+
+.languageDivider {
+  color: var(--text-muted);
+}
+
 @include mixins.media-down(variables.$breakpoint-md) {
   .mobileMenuButton {
     display: inline-flex;

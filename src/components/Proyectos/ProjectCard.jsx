@@ -11,6 +11,7 @@ import {
   Github,
   X,
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Proyectos.module.scss";
 
 const toApprox = (value) => {
@@ -23,11 +24,11 @@ const toApprox = (value) => {
   return `+${value}`;
 };
 
-const normalizeMediaItem = (item, projectName, index) => {
+const normalizeMediaItem = (item, projectName, index, previewLabel) => {
   if (typeof item === "string") {
     return {
       src: item,
-      alt: `${projectName} - vista ${index + 1}`,
+      alt: `${projectName} - ${previewLabel} ${index + 1}`,
     };
   }
 
@@ -37,20 +38,24 @@ const normalizeMediaItem = (item, projectName, index) => {
 
   return {
     src: item.src,
-    alt: item.alt || `${projectName} - vista ${index + 1}`,
+    alt: item.alt || `${projectName} - ${previewLabel} ${index + 1}`,
   };
 };
 
 const ProjectCard = ({ project, isExpanded, onToggle }) => {
+  const { text } = useLanguage();
+  const projectText = text.projects;
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const mediaItems = useMemo(
     () =>
       (project.media ?? [])
-        .map((item, index) => normalizeMediaItem(item, project.name, index))
+        .map((item, index) =>
+          normalizeMediaItem(item, project.name, index, projectText.previewOf),
+        )
         .filter(Boolean),
-    [project.media, project.name],
+    [project.media, project.name, projectText.previewOf],
   );
 
   const mediaCount = mediaItems.length;
@@ -134,12 +139,13 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
               className={styles.previewDialog}
               role="dialog"
               aria-modal="true"
-              aria-label={`Vista previa de ${project.name}`}
+              aria-label={`${projectText.openPreview} ${project.name}`}
               onClick={(event) => event.stopPropagation()}
             >
               <header className={styles.previewTopBar}>
                 <p className={styles.previewCounter}>
-                  Imagen {safeActiveMediaIndex + 1} de {mediaCount}
+                  {projectText.imageOf} {safeActiveMediaIndex + 1} {projectText.of}{" "}
+                  {mediaCount}
                 </p>
                 <button
                   type="button"
@@ -147,7 +153,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                   onClick={() => setIsPreviewOpen(false)}
                 >
                   <X size={16} />
-                  Cerrar
+                  {projectText.close}
                 </button>
               </header>
 
@@ -157,7 +163,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                     type="button"
                     className={`${styles.previewNav} ${styles.previewPrev}`}
                     onClick={handleMediaPrev}
-                    aria-label="Imagen anterior"
+                    aria-label={projectText.previousImage}
                   >
                     <ChevronLeft size={16} />
                   </button>
@@ -173,7 +179,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                     type="button"
                     className={`${styles.previewNav} ${styles.previewNext}`}
                     onClick={handleMediaNext}
-                    aria-label="Imagen siguiente"
+                    aria-label={projectText.nextImage}
                   >
                     <ChevronRight size={16} />
                   </button>
@@ -191,7 +197,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                           ? `${styles.dot} ${styles.dotActive}`
                           : styles.dot
                       }
-                      aria-label={`Ver imagen ${index + 1}`}
+                      aria-label={`${projectText.viewImage} ${index + 1}`}
                       onClick={() => handleMediaSelect(index)}
                     />
                   ))}
@@ -213,7 +219,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
           </h2>
           <button type="button" onClick={onToggle}>
             {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            {isExpanded ? "Ocultar detalle" : "Ver detalle"}
+            {isExpanded ? projectText.hideDetails : projectText.showDetails}
           </button>
         </div>
 
@@ -232,31 +238,33 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
           <div className={styles.details}>
             <div className={styles.detailsLayout}>
               <div className={styles.detailsMain}>
-                <h3>Puntos destacados</h3>
+                <h3>{projectText.highlights}</h3>
                 <ul>
                   {project.highlights.map((feature) => (
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
 
-                <h3>Escala del proyecto</h3>
+                <h3>{projectText.projectScale}</h3>
                 <div className={styles.metrics}>
                   <span>
-                    {toApprox(project.architecture.codeFiles)} archivos de codigo
+                    {toApprox(project.architecture.codeFiles)} {projectText.codeFiles}
                   </span>
                   <span>
-                    {toApprox(project.architecture.scssFiles)} archivos SCSS
+                    {toApprox(project.architecture.scssFiles)} {projectText.scssFiles}
                   </span>
                   <span>
-                    {toApprox(project.architecture.components)} componentes
+                    {toApprox(project.architecture.components)} {projectText.components}
                   </span>
-                  <span>{toApprox(project.architecture.pages)} pages</span>
+                  <span>
+                    {toApprox(project.architecture.pages)} {projectText.pages}
+                  </span>
                   {typeof project.architecture.group === "number" ? (
                     <span>
                       {project.architecture.group} {" "}
                       {project.architecture.group === 1
-                        ? "integrante"
-                        : "integrantes"}
+                        ? projectText.member
+                        : projectText.members}
                     </span>
                   ) : null}
                 </div>
@@ -266,13 +274,13 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                 <aside className={styles.sidePanel}>
                   {hasMedia ? (
                     <section className={styles.mediaSection}>
-                      <h3>Multimedia</h3>
+                      <h3>{projectText.media}</h3>
 
                       <button
                         type="button"
                         className={styles.mediaPreview}
                         onClick={() => setIsPreviewOpen(true)}
-                        aria-label={`Abrir vista previa de ${project.name}`}
+                        aria-label={`${projectText.openPreview} ${project.name}`}
                       >
                         <img
                           src={mediaItems[safeActiveMediaIndex].src}
@@ -292,7 +300,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                                   ? `${styles.dot} ${styles.dotActive}`
                                   : styles.dot
                               }
-                              aria-label={`Ver imagen ${index + 1}`}
+                              aria-label={`${projectText.viewImage} ${index + 1}`}
                               onClick={() => handleMediaSelect(index)}
                             />
                           ))}
@@ -306,13 +314,13 @@ const ProjectCard = ({ project, isExpanded, onToggle }) => {
                       {project.links?.live ? (
                         <a href={project.links.live} target="_blank" rel="noreferrer">
                           <ExternalLink size={14} />
-                          Ver sitio
+                          {projectText.viewSite}
                         </a>
                       ) : null}
                       {project.links?.repo ? (
                         <a href={project.links.repo} target="_blank" rel="noreferrer">
                           <Github size={14} />
-                          Repositorio
+                          {projectText.repository}
                         </a>
                       ) : null}
                     </div>

@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
+import { useLanguage } from "@/contexts/LanguageContext";
 import ProjectCard from "./ProjectCard";
 import styles from "./Proyectos.module.scss";
 
 const Proyectos = () => {
+  const { language, text } = useLanguage();
+  const projects = getProjects(language);
   const [expandedProjectId, setExpandedProjectId] = useState(null);
 
   return (
     <section className={styles.proyectos}>
       <header className={styles.header}>
-        <h1>Proyectos seleccionados</h1>
-        <p>
-          Una muestra de trabajos donde participe en diseno de interfaz,
-          estructura y desarrollo frontend.
-        </p>
+        <h1>{text.projects.title}</h1>
+        <p>{text.projects.description}</p>
       </header>
 
       <div className={styles.list}>

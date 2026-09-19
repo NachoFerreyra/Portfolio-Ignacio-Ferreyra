@@ -1,28 +1,33 @@
-import { skills } from "@/data/skills";
+import { skillsByLanguage } from "@/data/skills";
+import { useLanguage } from "@/contexts/LanguageContext";
 import SkillGroup from "./SkillGroup";
 import styles from "./Habilidades.module.scss";
 
 const Habilidades = () => {
+  const { language, text } = useLanguage();
+  const skills = skillsByLanguage[language];
   const groups = [
-    { title: "Lenguajes", items: skills.languages },
-    { title: "Metodologias", items: skills.methodologies },
-    { title: "Frontend", items: skills.frontendCv || skills.frontend },
-    { title: "Backend", items: skills.backend },
-    { title: "Bases de datos", items: skills.databases },
-    { title: "Testing", items: skills.testing },
-    { title: "Herramientas", items: skills.toolsCv },
-    { title: "Analisis y diseño", items: skills.analysisAndDesign },
+    { title: text.skills.groups.languages, items: skills.languages },
+    { title: text.skills.groups.methodologies, items: skills.methodologies },
+    {
+      title: text.skills.groups.frontend,
+      items: skills.frontendCv || skills.frontend,
+    },
+    { title: text.skills.groups.backend, items: skills.backend },
+    { title: text.skills.groups.databases, items: skills.databases },
+    { title: text.skills.groups.testing, items: skills.testing },
+    { title: text.skills.groups.tools, items: skills.toolsCv },
+    {
+      title: text.skills.groups.analysisAndDesign,
+      items: skills.analysisAndDesign,
+    },
   ].filter((group) => Array.isArray(group.items) && group.items.length);
 
   return (
     <section className={styles.habilidades}>
       <header className={styles.header}>
-        <h1>Habilidades tecnicas</h1>
-        <p>
-          Base tecnica construida entre la carrera y proyectos reales,
-          combinando desarrollo frontend, analisis funcional y trabajo en
-          equipo.
-        </p>
+        <h1>{text.skills.title}</h1>
+        <p>{text.skills.description}</p>
       </header>
 
       <div className={styles.groups}>

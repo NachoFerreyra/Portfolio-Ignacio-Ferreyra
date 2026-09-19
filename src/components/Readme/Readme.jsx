@@ -1,21 +1,21 @@
-import { profile } from "@/data/profile";
+import { profiles } from "@/data/profile";
 import { useOutletContext } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Readme.module.scss";
 
 const Readme = () => {
   const { openFile } = useOutletContext();
+  const { language, text } = useLanguage();
+  const profile = profiles[language];
 
   return (
     <section className={styles.readme}>
-      <h1># Bienvenido a mi portfolio!</h1>
+      <h1>{text.readme.title}</h1>
 
-      <p>
-        Este portfolio muestra mi perfil, experiencia tecnica y proyectos en los
-        que participe, con foco en frontend y analisis funcional.
-      </p>
+      <p>{text.readme.description}</p>
 
       <article className={styles.card}>
-        <h2>Datos de contacto</h2>
+        <h2>{text.readme.contactDetails}</h2>
         <ul>
           <li>
             <strong>Email:</strong>{" "}
@@ -24,7 +24,7 @@ const Readme = () => {
             </a>
           </li>
           <li>
-            <strong>Telefono:</strong> {profile.phone}
+            <strong>{text.readme.phone}:</strong> {profile.phone}
           </li>
           <li>
             <strong>GitHub:</strong>{" "}
@@ -46,19 +46,19 @@ const Readme = () => {
       </article>
 
       <article className={styles.card}>
-        <h2>Accesos rapidos</h2>
+        <h2>{text.readme.quickAccess}</h2>
         <div className={styles.quickActions}>
           <button type="button" onClick={() => openFile("proyectos")}>
-            Proyectos
+            {text.readme.projects}
           </button>
           <button type="button" onClick={() => openFile("habilidades")}>
-            Habilidades
+            {text.readme.skills}
           </button>
           <button type="button" onClick={() => openFile("contacto")}>
-            Contacto
+            {text.readme.contact}
           </button>
           <button type="button" onClick={() => openFile("sobre-mi")}>
-            Sobre mi
+            {text.readme.about}
           </button>
         </div>
       </article>

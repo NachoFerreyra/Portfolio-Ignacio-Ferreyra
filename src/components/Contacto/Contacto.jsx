@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { profile } from "@/data/profile";
+import { profiles } from "@/data/profile";
+import { useLanguage } from "@/contexts/LanguageContext";
 import ContactForm from "./ContactForm";
 import ContactLinks from "./ContactLinks";
 import styles from "./Contacto.module.scss";
 
 const Contacto = () => {
   const [status, setStatus] = useState("idle");
+  const { language, text } = useLanguage();
+  const profile = profiles[language];
 
   return (
     <section className={styles.contacto}>
       <header className={styles.header}>
-        <h1>Contacto</h1>
-        <p>
-          Si te interesa trabajar conmigo o queres conversar sobre algun
-          proyecto, podes escribirme desde el formulario o por los canales
-          directos.
-        </p>
+        <h1>{text.contact.title}</h1>
+        <p>{text.contact.description}</p>
       </header>
 
       <div className={styles.grid}>
