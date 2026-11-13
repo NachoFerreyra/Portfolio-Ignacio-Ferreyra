@@ -1,26 +1,7 @@
+import { getProjectScreenshots } from "./projectScreenshots.js";
+import { getAdditionalProjects } from "./additionalProjects.js";
+
 const projectAssets = [
-  {
-    id: "portfolio-ignacio",
-    stack: [
-      "React 19",
-      "Vite",
-      "React Router 7",
-      "Sass Modules",
-      "MUI",
-      "Lucide React",
-    ],
-    media: [],
-    links: {
-      repo: "https://github.com/NachoFerreyra/Portfolio-Ignacio-Ferreyra",
-    },
-    architecture: {
-      codeFiles: 31,
-      scssFiles: 20,
-      components: 16,
-      pages: 7,
-      group: 1,
-    },
-  },
   {
     id: "estetica-web",
     stack: [
@@ -40,16 +21,8 @@ const projectAssets = [
       "Figma",
       "Cloudflare Wrangler",
     ],
-    media: [],
     links: {
       live: "https://www.esteticacg.com/",
-    },
-    architecture: {
-      codeFiles: 278,
-      scssFiles: 133,
-      components: 148,
-      pages: 29,
-      group: 3,
     },
   },
   {
@@ -72,15 +45,7 @@ const projectAssets = [
       "Cypress",
       "Cloudflare Wrangler",
     ],
-    media: [],
     links: {},
-    architecture: {
-      codeFiles: 457,
-      scssFiles: 214,
-      components: 274,
-      pages: 25,
-      group: 3,
-    },
   },
   {
     id: "tech-store-api",
@@ -94,17 +59,9 @@ const projectAssets = [
       "class-validator",
       "Swagger / OpenAPI",
     ],
-    media: [],
     links: {
       repo: "https://github.com/NachoFerreyra/tech-store-api",
       live: "https://tech-store-api-hja3.onrender.com/api",
-    },
-    architecture: {
-      codeFiles: 20,
-      scssFiles: 0,
-      components: 4,
-      pages: 3,
-      group: 1,
     },
   },
   {
@@ -119,15 +76,7 @@ const projectAssets = [
       "SQLite",
       "REST API",
     ],
-    media: [],
     links: {},
-    architecture: {
-      codeFiles: 42,
-      scssFiles: 26,
-      components: 19,
-      pages: 3,
-      group: 1,
-    },
   },
   {
     id: "nails-escenciagm",
@@ -140,17 +89,9 @@ const projectAssets = [
       "WhatsApp Integration",
       "Responsive Design",
     ],
-    media: [],
     links: {
       live: "https://nails-esenciagm.vercel.app/",
       repo: "https://github.com/NachoFerreyra/nails-esenciagm",
-    },
-    architecture: {
-      codeFiles: 7,
-      scssFiles: 11,
-      components: 2,
-      pages: 1,
-      group: 1,
     },
   },
   {
@@ -165,53 +106,16 @@ const projectAssets = [
       "Supabase Auth",
       "Supabase Storage",
     ],
-    media: [],
     links: {
       live: "https://www.mysnegocioseinversiones.com/",
-    },
-    architecture: {
-      codeFiles: 36,
-      scssFiles: 23,
-      components: 18,
-      pages: 7,
-      group: 1,
     },
   },
 ];
 
 const projectCopy = {
   en: {
-    "portfolio-ignacio": {
-      name: "Ignacio Ferreyra Portfolio",
-      type: "Interactive personal portfolio",
-      summary:
-        "A Visual Studio Code-inspired portfolio that presents my professional profile, real-world projects, and technical stack through a navigable interface.",
-      highlights: [
-        "Editor-style interface with explorer, tabs, and a status bar.",
-        "Architecture organized by routes and decoupled components per section.",
-        "Dynamic content driven by data files for quick profile, skill, and project updates.",
-        "Project cards with expandable details, metrics, links, and multimedia previews.",
-        "Light/dark mode and a technical visual approach without sacrificing readability.",
-      ],
-    },
     "estetica-web": {
-      media: [
-        {
-          src: "/esteticacgweb/home-2026.png",
-          alt: "Estetica CG home page with the main treatment hero",
-          caption: "Home page and primary treatment entry point.",
-        },
-        {
-          src: "/esteticacgweb/services-2026.png",
-          alt: "Estetica CG service-category selection page",
-          caption: "Service catalog organized by treatment category.",
-        },
-        {
-          src: "/esteticacgweb/facial-detail-2026.png",
-          alt: "Estetica CG Facial Avanzado service detail page",
-          caption: "Treatment detail with a direct booking call to action.",
-        },
-      ],
+
       name: "Estética CG — Website",
       type: "Commercial website and service experience",
       summary:
@@ -225,6 +129,7 @@ const projectCopy = {
       ],
     },
     "estetica-admin": {
+
       name: "Estética CG — Admin",
       type: "Operational back-office platform",
       summary:
@@ -253,28 +158,7 @@ const projectCopy = {
       ],
     },
     taskdesk: {
-      media: [
-        {
-          src: "/taskdesk/kanban-2026.png",
-          alt: "TaskDesk Kanban board with task filters and workflow columns",
-          caption: "Kanban workflow with status columns and quick filters.",
-        },
-        {
-          src: "/taskdesk/analytics-2026.png",
-          alt: "TaskDesk analytics dashboard with project progress and workload",
-          caption: "Project KPIs, status distribution, priorities, and workload.",
-        },
-        {
-          src: "/taskdesk/create-task-2026.png",
-          alt: "TaskDesk create issue modal over the Kanban board",
-          caption: "Issue creation with type, priority, story points, assignee, and due date.",
-        },
-        {
-          src: "/taskdesk/backlog-2026.png",
-          alt: "TaskDesk backlog table with task state and priority",
-          caption: "Searchable backlog with task state, priority, points, and owner.",
-        },
-      ],
+
       name: "TaskDesk",
       type: "Full-stack agile task management platform",
       summary:
@@ -288,23 +172,7 @@ const projectCopy = {
       ],
     },
     "nails-escenciagm": {
-      media: [
-        {
-          src: "/nails/experience-2026.png",
-          alt: "Nails EsenciaGM digital card with booking actions, map, and filtered gallery",
-          caption: "Digital business card, booking channels, map, and service gallery.",
-        },
-        {
-          src: "/nails/gallery-2026.png",
-          alt: "Nails EsenciaGM Kapping gel gallery filter with nail design grid",
-          caption: "Service gallery filtered to Kapping gel designs.",
-        },
-        {
-          src: "/nails/lightbox-2026.png",
-          alt: "Nails EsenciaGM fullscreen image lightbox",
-          caption: "Accessible full-screen preview for gallery images.",
-        },
-      ],
+
       name: "Nails EsenciaGM",
       type: "Digital business card and service gallery",
       summary:
@@ -318,23 +186,7 @@ const projectCopy = {
       ],
     },
     "ms-bienes-raices": {
-      media: [
-        {
-          src: "/mys/home-2026.png",
-          alt: "M&S Negocios e Inversiones home page with featured properties",
-          caption: "Home hero with commercial calls to action and featured properties.",
-        },
-        {
-          src: "/mys/catalog-casas-2026.png",
-          alt: "M&S Casas property catalog with filter control and property cards",
-          caption: "Category catalog with property cards and commercial filters.",
-        },
-        {
-          src: "/mys/property-detail-2026.png",
-          alt: "M&S property detail with gallery, key facts, price, and contact action",
-          caption: "Property gallery, key facts, price, and direct contact action.",
-        },
-      ],
+
       name: "M&S Negocios e Inversiones",
       type: "Real estate platform",
       summary:
@@ -350,37 +202,8 @@ const projectCopy = {
     },
   },
   es: {
-    "portfolio-ignacio": {
-      name: "Portfolio Ignacio Ferreyra",
-      type: "Portfolio personal interactivo",
-      summary:
-        "Portfolio inspirado en Visual Studio Code para presentar perfil profesional, proyectos reales y stack técnico desde una interfaz navegable.",
-      highlights: [
-        "Interfaz tipo editor con explorador, pestañas y barra de estado.",
-        "Arquitectura por rutas y componentes desacoplados por sección.",
-        "Contenido dinámico desde archivos de datos para editar perfil, habilidades y proyectos rápidamente.",
-        "Tarjetas de proyecto con detalle desplegable, métricas, enlaces y vista previa multimedia.",
-        "Modo claro/oscuro y enfoque visual técnico sin perder legibilidad.",
-      ],
-    },
     "estetica-web": {
-      media: [
-        {
-          src: "/esteticacgweb/home-2026.png",
-          alt: "Inicio de Est\u00e9tica CG con hero principal de tratamientos",
-          caption: "Inicio y acceso principal a tratamientos.",
-        },
-        {
-          src: "/esteticacgweb/services-2026.png",
-          alt: "Selecci\u00f3n de categor\u00edas de servicios de Est\u00e9tica CG",
-          caption: "Cat\u00e1logo de servicios organizado por categor\u00eda.",
-        },
-        {
-          src: "/esteticacgweb/facial-detail-2026.png",
-          alt: "Detalle del servicio Facial Avanzado de Est\u00e9tica CG",
-          caption: "Detalle de tratamiento con llamada directa a reservar.",
-        },
-      ],
+
       name: "Estética CG — Web",
       type: "Sitio comercial y experiencia de servicios",
       summary:
@@ -394,6 +217,7 @@ const projectCopy = {
       ],
     },
     "estetica-admin": {
+
       name: "Estética CG — Admin",
       type: "Backoffice operativo",
       summary:
@@ -422,28 +246,7 @@ const projectCopy = {
       ],
     },
     taskdesk: {
-      media: [
-        {
-          src: "/taskdesk/kanban-2026.png",
-          alt: "Tablero Kanban de TaskDesk con filtros y columnas de flujo de trabajo",
-          caption: "Flujo Kanban con columnas de estado y filtros r\u00e1pidos.",
-        },
-        {
-          src: "/taskdesk/analytics-2026.png",
-          alt: "Panel de anal\u00edtica de TaskDesk con progreso y carga de trabajo",
-          caption: "KPIs, distribuci\u00f3n por estado, prioridades y carga de trabajo.",
-        },
-        {
-          src: "/taskdesk/create-task-2026.png",
-          alt: "Modal para crear incidencia de TaskDesk sobre el tablero Kanban",
-          caption: "Creaci\u00f3n de incidencias con tipo, prioridad, puntos, responsable y fecha.",
-        },
-        {
-          src: "/taskdesk/backlog-2026.png",
-          alt: "Tabla de backlog de TaskDesk con estado y prioridad de tareas",
-          caption: "Backlog buscable con estado, prioridad, puntos y responsable.",
-        },
-      ],
+
       name: "TaskDesk",
       type: "Plataforma full-stack de gesti\u00f3n \u00e1gil de tareas",
       summary:
@@ -457,23 +260,7 @@ const projectCopy = {
       ],
     },
     "nails-escenciagm": {
-      media: [
-        {
-          src: "/nails/experience-2026.png",
-          alt: "Tarjeta digital de Nails EsenciaGM con reservas, mapa y galer\u00eda filtrada",
-          caption: "Tarjeta digital, canales de reserva, mapa y galer\u00eda de servicios.",
-        },
-        {
-          src: "/nails/gallery-2026.png",
-          alt: "Filtro Kapping gel de Nails EsenciaGM con grilla de dise\u00f1os",
-          caption: "Galer\u00eda de servicios filtrada a dise\u00f1os Kapping gel.",
-        },
-        {
-          src: "/nails/lightbox-2026.png",
-          alt: "Vista ampliada a pantalla completa de Nails EsenciaGM",
-          caption: "Vista ampliada a pantalla completa para las im\u00e1genes de la galer\u00eda.",
-        },
-      ],
+
       name: "Nails EsenciaGM",
       type: "Tarjeta digital y galer\u00eda de servicios",
       summary:
@@ -487,23 +274,7 @@ const projectCopy = {
       ],
     },
     "ms-bienes-raices": {
-      media: [
-        {
-          src: "/mys/home-2026.png",
-          alt: "Inicio de M&S Negocios e Inversiones con propiedades destacadas",
-          caption: "Hero comercial y propiedades destacadas.",
-        },
-        {
-          src: "/mys/catalog-casas-2026.png",
-          alt: "Cat\u00e1logo de casas de M&S con filtro y tarjetas de propiedades",
-          caption: "Cat\u00e1logo por categor\u00eda con tarjetas y filtros comerciales.",
-        },
-        {
-          src: "/mys/property-detail-2026.png",
-          alt: "Detalle de propiedad de M&S con galer\u00eda, datos clave, precio y contacto",
-          caption: "Galer\u00eda de propiedad, datos clave, precio y contacto directo.",
-        },
-      ],
+
       name: "M&S Negocios e Inversiones",
       type: "Sitio inmobiliario",
       summary:
@@ -520,8 +291,17 @@ const projectCopy = {
   },
 };
 
-export const getProjects = (language = "en") =>
-  projectAssets.map((project) => ({
+const categories = {
+  "estetica-web": "web", "estetica-admin": "product",
+  "tech-store-api": "product", taskdesk: "product", "nails-escenciagm": "web", "ms-bienes-raices": "web",
+};
+
+export const getProjects = (language = "en") => {
+  const locale = language === "es" ? "es" : "en";
+  return [...projectAssets.map((project) => ({
     ...project,
-    ...projectCopy[language][project.id],
-  }));
+    ...projectCopy[locale][project.id],
+    category: categories[project.id],
+
+  })), ...getAdditionalProjects(locale)].map((project) => ({ ...project, media: getProjectScreenshots(project.id, locale) }));
+};

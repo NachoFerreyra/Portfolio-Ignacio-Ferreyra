@@ -1,56 +1,61 @@
-# Ignacio Ferreyra Portfolio
+﻿# Ignacio Ferreyra — Portfolio
 
-Interactive portfolio inspired by the Visual Studio Code interface.
+Portfolio personal desarrollado con React y Vite. Reúne perfil, experiencia laboral, formación universitaria, idiomas, habilidades, proyectos y contacto en una sola página.
 
-## Highlights
+## Funcionalidades
 
-- VS Code-inspired interface with an explorer, tabs, and a status bar.
-- English/Spanish language selector and light/dark mode.
-- Home, about, projects, skills, and contact sections.
-- Real projects with technical details, metrics, links, and multimedia previews.
-- Downloads the Spanish CV or English resume according to the selected language.
+- Español e inglés, con tema claro y oscuro.
+- Diseño responsive y navegación por secciones.
+- Lista de proyectos por tandas de cuatro, filtros y detalles desplegables.
+- Galerías con miniaturas y visor de imágenes con zoom, desplazamiento y navegación por teclado.
+- Descarga de CV en español o inglés.
+- Movimiento reducido, controles de teclado y gestión del foco en el visor.
 
-## Featured projects
+## Proyectos incluidos
 
-- **Ignacio Ferreyra Portfolio:** interactive portfolio with a VS Code-inspired UI, routes, light/dark mode, and data-driven content.
-- **Estética CG — Website:** responsive commercial website with route-level SEO, sitemap, PWA, forms, and Cloudflare deployment.
-- **Estética CG — Admin:** operational back office for appointments, clients, professionals, catalog, sales, promotions, reminders, and settings.
-- **M&S Negocios e Inversiones:** real estate platform with property catalog, filters, property modal, protected admin dashboard, and Supabase.
-- **TaskDesk:** full-stack agile task management platform with Kanban, backlog, issue flows, analytics, Express, and SQLite.
-- **Nails EsenciaGM:** responsive digital business card with booking channels, map, social links, a filterable service gallery, and an accessible lightbox.
-- **Tech Store API:** NestJS REST API with JWT authentication, RBAC, MongoDB Atlas, and Swagger/OpenAPI documentation.
+Estética CG Web y Admin, TaskDesk, M&S Negocios e Inversiones, Nails EsenciaGM, Amarilis Cerezo, Music Desk y Tech Store API.
 
-## Stack
+Las tecnologías y los servicios de esos proyectos se describen en sus fichas. El portfolio utiliza React 19, Vite, Sass Modules y Lucide React; no requiere backend ni variables de entorno.
 
-- React 19
-- Vite
-- React Router
-- SCSS + CSS Modules
-- MUI
-- Lucide React
-- Supabase
-- Cloudflare Wrangler
-
-## Scripts
-
-- `npm run dev` — development environment
-- `npm run build` — production build
-- `npm run preview` — preview the production build
-- `npm run lint` — validate the source with ESLint
-
-## Run locally
+## Desarrollo
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Contact
+## Comandos
 
+| Comando | Uso |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción en `dist/` |
+| `npm run preview` | Vista previa del build |
+| `npm run check` | Build, pruebas de DOM y ESLint |
+| `npm test` | Pruebas de DOM; requiere un build previo para comprobar CSS y bundle |
+| `npm run lint` | ESLint |
+| `npm run test:browser` | Pruebas con Playwright y Chrome instalado; requiere la app en `http://localhost:5173/` |
+
+Las pruebas de navegador generan capturas y un reporte en `.audit-screenshots/`, carpeta ignorada por Git. `dist/` y `node_modules/` también están excluidos del repositorio.
+
+## Contenido y estructura
+
+- `src/App.jsx`: estructura de la SPA, filtros y paginación de proyectos.
+- `src/components/`: tarjetas, detalles y visor de imágenes.
+- `src/contexts/`: idioma y tema.
+- `src/data/profile.js`: datos personales, experiencia y formación.
+- `src/data/skills.js`: habilidades y tecnologías.
+- `src/data/projects.js` y `additionalProjects.js`: fichas de proyectos.
+- `src/data/projectScreenshots.js`: rutas, dimensiones y textos de las 18 capturas vigentes.
+- `src/data/portfolioCopy.js` y `translations.js`: textos de interfaz y metadatos ES/EN.
+- `src/styles/` y `src/App.module.scss`: estilos globales y de la página.
+- `public/`: capturas vigentes, foto de perfil, CV e icono de la pestaña.
+- `tests/` y `scripts/verify-portfolio-browser.mjs`: comprobaciones de DOM y navegador.
+
+La procedencia de las imágenes y las condiciones de demostración se documentan en [docs/project-screenshots.md](docs/project-screenshots.md).
+
+## Contacto
+
+- [GitHub](https://github.com/NachoFerreyra)
+- [LinkedIn](https://www.linkedin.com/in/ignacio-ferreyra1)
 - Email: `ignaciooferreyraa@gmail.com`
-- GitHub: <https://github.com/NachoFerreyra>
-- LinkedIn: <https://www.linkedin.com/in/ignacio-ferreyra1>
-
-## License
-
-Personal and professional project for portfolio presentation.
