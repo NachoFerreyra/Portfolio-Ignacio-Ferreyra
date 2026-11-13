@@ -2,7 +2,7 @@ export const profiles = {
   en: {
     name: "Ignacio Ferreyra",
     role: "Frontend Developer | Systems Analyst and Programmer",
-    location: "Argentina",
+    location: "Mendoza, Argentina",
     availability: "Available",
     phone: "+54 2634-522248",
     avatar: {
@@ -11,7 +11,16 @@ export const profiles = {
       position: "50% 35%",
     },
     professionalSummary:
-      "Frontend Developer with experience building commercial web platforms, administrative dashboards, and interactive catalogs. Specialized in React, Vite, and SCSS Modules. I develop scalable interfaces and integrate authentication, data management, and business functionality.",
+      "I'm a frontend developer and systems analyst. I mainly work with React, Vite and Sass on websites, admin dashboards and product catalogs.",
+    workExperience: [
+      {
+        company: "ZondaLogic",
+        companyUrl: "https://www.linkedin.com/company/zondalogic",
+        role: "Co-founder · Frontend Developer",
+        period: "February 2025 – Present",
+        description: "Frontend development of web platforms and management systems. Team development of the Estética CG platform.",
+      },
+    ],
     languages: [
       { name: "Spanish", level: "Native" },
       { name: "English", level: "Intermediate (B1)" },
@@ -21,11 +30,6 @@ export const profiles = {
         title: "University Degree in Systems Analysis and Programming",
         institution: "Universidad Champagnat",
         period: "2022 – 2025",
-      },
-      {
-        title: "Agricultural Technician — Oenology",
-        institution: "Escuela Moisés Julio Chade 4-027",
-        period: "2016 – 2021",
       },
     ],
     about: {
@@ -52,7 +56,7 @@ export const profiles = {
   es: {
     name: "Ignacio Ferreyra",
     role: "Desarrollador Frontend | Analista Programador Universitario de Sistemas",
-    location: "Argentina",
+    location: "Mendoza, Argentina",
     availability: "Disponible",
     phone: "+54 2634-522248",
     avatar: {
@@ -61,7 +65,16 @@ export const profiles = {
       position: "50% 35%",
     },
     professionalSummary:
-      "Desarrollador Frontend con experiencia en plataformas comerciales, paneles administrativos y catálogos interactivos. Especializado en React, Vite y SCSS Modules. Desarrollo interfaces escalables e integro autenticación, gestión de datos y funcionalidades de negocio.",
+      "Soy desarrollador frontend y analista programador de sistemas. Trabajo principalmente con React, Vite y Sass en sitios web, paneles administrativos y catálogos de productos.",
+    workExperience: [
+      {
+        company: "ZondaLogic",
+        companyUrl: "https://www.linkedin.com/company/zondalogic",
+        role: "Cofundador · Desarrollador frontend",
+        period: "Febrero de 2025 – Actualidad",
+        description: "Desarrollo frontend de plataformas web y sistemas de gestión. Trabajo en equipo en la plataforma de Estética CG.",
+      },
+    ],
     languages: [
       { name: "Español", level: "Nativo" },
       { name: "Inglés", level: "Intermedio (B1)" },
@@ -71,11 +84,6 @@ export const profiles = {
         title: "Analista Programador Universitario de Sistemas",
         institution: "Universidad Champagnat",
         period: "2022 – 2025",
-      },
-      {
-        title: "Técnico Agropecuario — Enólogo",
-        institution: "Escuela Moisés Julio Chade 4-027",
-        period: "2016 – 2021",
       },
     ],
     about: {

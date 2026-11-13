@@ -5,7 +5,7 @@ import { translations } from "@/data/translations";
 const LanguageContext = createContext(null);
 
 const STORAGE_KEY = "portfolio-language";
-const DEFAULT_LANGUAGE = "en";
+const DEFAULT_LANGUAGE = "es";
 
 const getInitialLanguage = () => {
   if (typeof window === "undefined") return DEFAULT_LANGUAGE;
